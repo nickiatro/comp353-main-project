@@ -43,7 +43,7 @@ CREATE TABLE Program (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name CHAR(100) NOT NULL,
     degree ENUM("undergraduate", "graduate") NOT NULL,
-    credit_req INT UNSIGNED NOT NULL,
+    credit_req INT UNSIGNED NOT NULL DEFAULT 0,
     is_thesis_based BOOLEAN NOT NULL,
     department_id INT NOT NULL,
     CONSTRAINT FK_Department_Program FOREIGN KEY (department_id) REFERENCES Department(id)
