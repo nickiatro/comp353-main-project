@@ -12,16 +12,22 @@ DELETE FROM StudentProgram;
 DELETE FROM Class;
 DELETE FROM Section;
 DELETE FROM Grade;
-DELETE FROM TeachingAssistant;
 DELETE FROM Instructor;
 DELETE FROM Student;
 DELETE FROM Course;
 DELETE FROM Program;
 DELETE FROM Term;
 DELETE FROM Department;
-
-
-
-
-
-
+DELETE FROM Campus;
+DELETE FROM Building;
+DELETE FROM Room;
+DELETE FROM Facilities;
+DELETE FROM Person_ID;
+DELETE FROM Address;
+DELETE FROM StudentPastDegrees;
+DELETE FROM IndustryExperience;
+DELETE FROM Contract;
+DELETE FROM Salary;
+DELETE FROM Publications;
+DELETE FROM Awards;
+DELETE FROM TA_Assignments;
