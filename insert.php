@@ -5,7 +5,7 @@ if(!isset($_SESSION)) {
     $_SESSION["attributes"] = $_SESSION["tables"] = $_SESSION["search"] = "";
 }
 
-$server = "localhost:3306";
+$server = fread(fopen("server_url.txt", "r"), filesize("server_url.txt"));
 $username = "prc353_1";
 $password = "h3g1m8ca";
 
