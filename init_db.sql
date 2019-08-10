@@ -120,13 +120,13 @@ CREATE TABLE Publications (
     date DATE NOT NULL
 );
 
-CREATE TABLE Awards(
+CREATE TABLE Awards (
     person_id INT NOT NULL REFERENCES Person_ID(id),
     name CHAR(100) NOT NULL,
     date DATE NOT NULL
 );
 
-CREATE TABLE Salary(
+CREATE TABLE Salary (
     person_id INT NOT NULL REFERENCES Person_ID(id),
     salary INT UNSIGNED NOT NULL,
     date_started DATE NOT NULL,
@@ -134,7 +134,7 @@ CREATE TABLE Salary(
 );
 
 -- renamed TeachingAssistant to Contracts to meet requirements
-CREATE TABLE Contract(
+CREATE TABLE Contract (
     name char(100) NOT NULL, -- eg "marker", "instructor", "ta"
     course_name char(100) NOT NULL,
     person_id INT NOT NULL,
