@@ -1,4 +1,148 @@
 -- only run this after you have initialised the database.
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('88', 'Montréal', 'QC', 'H5B');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('831', 'Oka', 'QC', 'J0N');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('00', 'New-Richmond', 'QC', 'J7R');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('54', 'Montréal', 'QC', 'H5B');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('71', 'Saint-Bruno-de-Guigues', 'QC', 'G6B');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('573', 'Mercier', 'QC', 'J6R');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('7856', 'Saint-Ambroise', 'QC', 'G7P');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('84', 'Montréal', 'QC', 'G6W');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('39', 'Sainte-Sophie', 'QC', 'J5J');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('5227', 'Magog', 'QC', 'J1X');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('224', 'Neuville', 'QC', 'T9M');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('1089', 'Maniwaki', 'QC', 'J9E');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('89286', 'Rivière-du-Loup', 'QC', 'G5R');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('8', 'Fermont', 'QC', 'J1E');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('07', 'Matagami', 'QC', 'N2M');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('0958', 'Coaticook', 'QC', 'J1A');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('857', 'East Angus', 'QC', 'N2B');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('15', 'Napierville', 'QC', 'M2N');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('6769', 'Thetford-Mines', 'QC', 'G6G');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('751', 'Lévis', 'QC', 'G6W');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('8743', 'Joliette', 'QC', 'J6E');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('5751', 'Bécancour', 'QC', 'G9H');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('76135', 'Jonquière', 'QC', 'G7Y');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('3785', 'Notre-Dame-des-Prairies', 'QC', 'K6V');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('31', 'Matagami', 'QC', 'N2M');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('71', 'Maskinongé', 'QC', 'T7A');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('8203', 'Amqui', 'QC', 'G5J');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('31483', 'Alma', 'QC', 'N6J');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('81365', 'Saint-Bruno', 'QC', 'J3V');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('36583', 'Berthierville', 'QC', 'S3N');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('23', 'Beaconsfield', 'QC', 'H9W');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('54693', 'Sainte-Martine', 'QC', 'A1C');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('2199', 'Blainville', 'QC', 'J7J');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('4882', 'Sainte-Sophie', 'QC', 'J5J');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('92', 'Port-Cartier', 'QC', 'G5B');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('74', 'Hudson', 'QC', 'J0N');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('4', 'Mercier', 'QC', 'J6R');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('12', 'Danville', 'QC', 'J0A');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('02733', 'Asbestos', 'QC', 'J1T');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('1', 'Kingsey Falls', 'QC', 'T8H');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('10918', 'Amos', 'QC', 'J9T');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('4', 'Repentigny', 'QC', 'J6V');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('502', 'Cowansville', 'QC', 'J2K');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('2', 'Jonquière', 'QC', 'G7Y');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('50864', 'Baie-Saint-Paul', 'QC', 'G3Z');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('9331', 'Rimouski', 'QC', 'G5N');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('0643', 'Thetford-Mines', 'QC', 'G6G');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('13352', 'Malartic', 'QC', 'X0G');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('0589', 'Saint-Jérôme', 'QC', 'J7Z');
+INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('6', 'Saint-Joseph-de-Coleraine', 'QC', 'N2E');
+
+INSERT INTO Campus (name) VALUES ('Sir George Williams');
+INSERT INTO Campus (name) VALUES ('Loyola');
+
+INSERT INTO Building (campus_name, name, numOfFloors) VALUES ('Sir George Williams', 'Hall', 15);
+INSERT INTO Building (campus_name, name, numOfFloors) VALUES ('Sir George Williams', 'Molson', 15);
+
+INSERT INTO Room (campus_name, building_name, num, capacity, room_type, floorNum) VALUES
+('Sir George Williams', 'Hall', 535, 150, 'classroom', 5),
+('Sir George Williams', 'Hall', 635, 150, 'classroom', 6),
+('Sir George Williams', 'Hall', 735, 150, 'classroom', 7),
+('Sir George Williams', 'Hall', 835, 150, 'classroom', 8),
+('Sir George Williams', 'Hall', 935, 150, 'classroom', 9),
+('Sir George Williams', 'Molson', 135, 150, 'classroom', 1),
+('Sir George Williams', 'Molson', 235, 150, 'classroom', 2),
+('Sir George Williams', 'Molson', 335, 150, 'classroom', 3),
+('Sir George Williams', 'Molson', 435, 150, 'classroom', 4),
+('Sir George Williams', 'Molson', 535, 150, 'classroom', 5);
+
+-- Room variables
+SET @H535 := (SELECT id FROM Room WHERE building_name = 'Hall' AND num = 535);
+SET @H635 := (SELECT id FROM Room WHERE building_name = 'Hall' AND num = 635);
+SET @H735 := (SELECT id FROM Room WHERE building_name = 'Hall' AND num = 735);
+SET @H835 := (SELECT id FROM Room WHERE building_name = 'Hall' AND num = 835);
+SET @H935 := (SELECT id FROM Room WHERE building_name = 'Hall' AND num = 935);
+SET @MB135 := (SELECT id FROM Room WHERE building_name = 'Molson' AND num = 135);
+SET @MB235 := (SELECT id FROM Room WHERE building_name = 'Molson' AND num = 235);
+SET @MB335 := (SELECT id FROM Room WHERE building_name = 'Molson' AND num = 335);
+SET @MB435 := (SELECT id FROM Room WHERE building_name = 'Molson' AND num = 435);
+SET @MB535 := (SELECT id FROM Room WHERE building_name = 'Molson' AND num = 535);
+
+INSERT INTO Facilities (room_id, facility) VALUES
+(@H535, 'Projector'),
+(@H635, 'Projector'),
+(@H735, 'Projector'),
+(@H835, 'Projector'),
+(@H935, 'Projector'),
+(@MB135, 'Projector'),
+(@MB235, 'Projector'),
+(@MB335, 'Projector'),
+(@MB435, 'Projector'),
+(@MB535, 'Projector');
+
+INSERT INTO Person (first_name, last_name, SSN, email_addr, phone_number, home_address_id) VALUES 
+('Blakelee', 'Littler', '680-53-1677', 'blittler0@jalbum.net', '843-685-7241', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Ruth', 'Anselm', '244-31-5513', 'ranselm1@bizjournals.com', '451-593-4535', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Marleah', 'Winterbourne', '111-94-4892', 'mwinterbourne2@cloudflare.com', '793-484-7875', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Claudina', 'Lennie', '879-69-8234', 'clennie3@yolasite.com', '751-551-8546', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Dody', 'Noor', '540-09-0346', 'dnoor4@qq.com', '440-374-8502', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Hobie', 'Corssen', '234-74-3741', 'hcorssen5@ted.com', '653-946-3600', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Galven', 'Gambrell', '774-81-4118', 'ggambrell6@vistaprint.com', '899-822-5412', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Chelsy', 'Fripps', '467-18-0793', 'cfripps7@buzzfeed.com', '697-636-8503', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Jabez', 'Gallen', '322-33-9780', 'jgallen8@nsw.gov.au', '873-739-8977', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Kain', 'Snedden', '160-78-0182', 'ksnedden9@samsung.com', '203-780-1973', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Ericka', 'McAvinchey', '872-29-5693', 'emcavincheya@de.vu', '786-658-6421', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Lindsy', 'Speers', '822-51-7742', 'lspeersb@zimbio.com', '866-141-8088', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Noach', 'Crotch', '197-96-1919', 'ncrotchc@istockphoto.com', '355-543-5435', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Ernest', 'Fenner', '363-03-8959', 'efennerd@house.gov', '889-407-4313', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Hugo', 'Tumulty', '430-96-0938', 'htumultye@sakura.ne.jp', '791-941-1369', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Laurence', 'Palomba', '419-55-6084', 'lpalombaf@zimbio.com', '305-405-6975', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Donalt', 'McKennan', '638-89-2387', 'dmckennang@feedburner.com', '225-849-8523', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Kimbra', 'Degenhardt', '558-26-4939', 'kdegenhardth@theatlantic.com', '343-620-5625', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Margaretha', 'Orteau', '388-48-1508', 'morteaui@ca.gov', '604-603-6097', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Helga', 'Moakes', '418-12-0787', 'hmoakesj@hhs.gov', '373-181-3007', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Frederique', 'Cheavin', '492-37-3359', 'fcheavink@ed.gov', '104-107-2475', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Koo', 'Matovic', '681-69-6173', 'kmatovicl@deliciousdays.com', '419-160-9670', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Kora', 'Peckitt', '667-74-6610', 'kpeckittm@joomla.org', '933-176-3287', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Kristopher', 'Pressland', '425-18-8618', 'kpresslandn@imgur.com', '842-999-2856', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Germain', 'Earles', '711-62-6657', 'gearleso@plala.or.jp', '645-205-3582', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Nat', 'Landy', '488-43-4797', 'nlandyp@studiopress.com', '252-885-1105', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Melissa', 'Roubeix', '860-95-7612', 'mroubeixq@who.int', '434-585-1593', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Ilse', 'Hun', '363-45-6841', 'ihunr@webeden.co.uk', '705-743-3344', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Jared', 'Eyeington', '452-79-3446', 'jeyeingtons@shop-pro.jp', '298-327-5381', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Cathy', 'Wildbore', '370-91-4173', 'cwildboret@taobao.com', '161-407-6136', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Alisha', 'Ehrat', '856-62-4964', 'aehratu@amazon.co.jp', '543-366-8792', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Mia', 'Lidgett', '631-04-2806', 'mlidgettv@nhs.uk', '481-797-6138', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Arlinda', 'Vasilyev', '350-02-3431', 'avasilyevw@sfgate.com', '453-304-6037', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Maximo', 'Waterhowse', '861-34-8489', 'mwaterhowsex@tripadvisor.com', '545-835-7650', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Harbert', 'Gaitung', '345-14-4466', 'hgaitungy@sciencedaily.com', '806-506-7832', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Raine', 'Dundon', '184-95-6192', 'rdundonz@nasa.gov', '186-152-5184', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Larina', 'Hyatt', '311-28-5276', 'lhyatt10@imageshack.us', '478-260-8395', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Blisse', 'Luby', '166-13-8699', 'bluby11@narod.ru', '954-593-0111', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Field', 'Trethewey', '204-84-8997', 'ftrethewey12@moonfruit.com', '617-398-2808', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Brien', 'Scottini', '206-16-4969', 'bscottini13@addthis.com', '620-498-0262', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Raina', 'Aronowicz', '410-47-6801', 'raronowicz14@indiegogo.com', '374-580-5422', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Marion', 'Emnoney', '796-55-5808', 'memnoney15@forbes.com', '570-797-0242', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Claude', 'Loyd', '450-90-2065', 'cloyd16@etsy.com', '695-972-1726', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Raimondo', 'Oboy', '379-12-4504', 'roboy17@google.it', '524-588-2889', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Lorenza', 'Pollock', '275-57-6135', 'lpollock18@foxnews.com', '261-685-6614', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Nikolos', 'Fairhurst', '732-67-4895', 'nfairhurst19@mapquest.com', '569-506-4430', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Annabela', 'Lympenie', '728-59-3088', 'alympenie1a@yahoo.com', '850-198-3728', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Harrietta', 'Polino', '696-96-1869', 'hpolino1b@upenn.edu', '346-317-2729', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Andrea', 'Slimings', '718-88-7433', 'aslimings1c@cdbaby.com', '678-762-0135', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Lolita', 'Grassin', '813-67-2785', 'lgrassin1d@arstechnica.com', '747-691-2662', (SELECT id FROM Address ORDER BY RAND() LIMIT 1))
 
 INSERT INTO Department(name)
 VALUES ('Mathematics'),

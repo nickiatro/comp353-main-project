@@ -1,12 +1,18 @@
 -- main project tables    
 SET SQL_SAFE_UPDATES = 0;
 SET GLOBAL log_bin_trust_function_creators = 1;
+SET @TRIGGER_BEFORE_INSERT_CHECKS = TRUE;
+SET @TRIGGER_AFTER_INSERT_CHECKS = TRUE;
+SET @TRIGGER_BEFORE_UPDATE_CHECKS = TRUE;
+SET @TRIGGER_AFTER_UPDATE_CHECKS = TRUE;
+SET @TRIGGER_BEFORE_DELETE_CHECKS = TRUE;
+SET @TRIGGER_AFTER_DELETE_CHECKS = TRUE;
 
 CREATE TABLE Address (
-    id INT UNSIGNED NOT NULL PRIMARY KEY,
-    civic_number INT UNSIGNED NOT NULL,
-    city INT UNSIGNED NOT NULL,
-    province CHAR(2) NOT NULL,
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    civic_number CHAR(50) NOT NULL,
+    city CHAR(150) NOT NULL,
+    province CHAR(5) NOT NULL,
     postal_code CHAR(100) NOT NULL
 );
 
@@ -14,9 +20,9 @@ CREATE TABLE Person (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name CHAR(100) NOT NULL,
     last_name CHAR(100) NOT NULL,
-    SSN INT UNSIGNED NOT NULL,
+    SSN CHAR(50) NOT NULL,
     email_addr CHAR(100) NOT NULL,
-    phone_number INT UNSIGNED NOT NULL,
+    phone_number CHAR(50) NOT NULL,
     home_address_id INT UNSIGNED NOT NULL REFERENCES Address(id)
 );
 
@@ -27,6 +33,7 @@ CREATE TABLE Campus (
 CREATE TABLE Building (
     campus_name CHAR(100) REFERENCES Campus(name),
     name CHAR(100),
+    numOfFloors INT NOT NULL,
     PRIMARY KEY(name, campus_name)
 );
 
@@ -38,6 +45,7 @@ CREATE TABLE Room (
     num INT UNSIGNED,
     capacity INT UNSIGNED DEFAULT 0,
     room_type CHAR(100), -- conference_room, office, classroom, laboratory...
+    floorNum INT NOT NULL,
     UNIQUE KEY (num, building_name, campus_name) -- only one room of number # per building per campus
 );
 
@@ -46,7 +54,6 @@ CREATE TABLE Facilities (
     facility CHAR(100),
     PRIMARY KEY (room_id, facility)
 );
-
 
 CREATE TABLE Department (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -203,7 +210,8 @@ CREATE TABLE StudentProgram (
 
 CREATE TABLE ResearchFunding (
     person_id INT PRIMARY KEY REFERENCES Person(id),
-    amount FLOAT(8,2) NOT NULL DEFAULT 0
+    amount FLOAT(8,2) NOT NULL DEFAULT 0,
+    term_id INT NOT NULL REFERENCES Term(id)
 );
 
 CREATE TABLE Prerequisite (
