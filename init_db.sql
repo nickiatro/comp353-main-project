@@ -28,6 +28,7 @@ CREATE TABLE Building (
     PRIMARY KEY(name, campus_name)
 );
 
+-- two constraints: 1. has capacity > 0 only if lab or classroom
 CREATE TABLE Room (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     campus_name CHAR(100) REFERENCES Campus(name),
@@ -40,7 +41,7 @@ CREATE TABLE Room (
 
 CREATE TABLE Facilities (
     room_id INT NOT NULL REFERENCES Room(id),
-    facility CHAR(100), -- projector, computer, etc.
+    facility CHAR(100),
     PRIMARY KEY (room_id, facility)
 );
 
@@ -127,7 +128,7 @@ CREATE TABLE Salary(
 );
 
 -- renamed TeachingAssistant to Contracts to meet requirements
-CREATE TABLE Contract(
+CREATE TABLE Contract (
     name char(100) NOT NULL, -- eg "marker", "instructor", "ta"
     course_name char(100) NOT NULL REFERENCES Course(id),
     person_id INT NOT NULL REFERENCES Person(id),
@@ -221,6 +222,7 @@ CREATE TABLE InstructorDepartment (
     PRIMARY KEY (person_id, department_id)
 );
 
+-- needs trigger: verify advisor is an instructor
 CREATE TABLE Advisor (
     person_id INT NOT NULL REFERENCES Person(id),
     program_id INT NOT NULL REFERENCES Program(id),
@@ -228,6 +230,7 @@ CREATE TABLE Advisor (
     PRIMARY KEY (person_id, program_id, term_id)
 );
 
+-- additional trigger: student's program is in the advisor's department
 CREATE TABLE StudentAdvisor (
     student_id INT NOT NULL REFERENCES Person(id),
     advisor_id INT NOT NULL REFERENCES Person(id),
@@ -249,6 +252,7 @@ CREATE TABLE StudentSupervisor (
     granted_funding BOOLEAN DEFAULT FALSE, -- TODO: change this.
     PRIMARY KEY (person_id, supervisor_id)
 );
+
 
 -- triggers
 DELIMITER $$
