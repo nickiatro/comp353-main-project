@@ -1,4 +1,6 @@
--- main project tables
+-- main project tables    
+SET SQL_SAFE_UPDATES = 0;
+SET GLOBAL log_bin_trust_function_creators = 1;
 
 CREATE TABLE Address (
     id INT UNSIGNED NOT NULL PRIMARY KEY,
@@ -277,7 +279,7 @@ DELIMITER $$
 CREATE TRIGGER passing_grade_prereqs BEFORE INSERT ON Class FOR EACH ROW
 BEGIN
     -- doing set difference: if there remains classes in the prereqs such that student didn't take it and pass, reject this signup to the course.
-    IF EXISTS ((SELECT Course.course_id FROM Section, Prerequisite, Course WHERE NEW.section_id = Section.id AND Section.course_id = Prerequisite.course_id AND Prerequisite.prerequisite_course_id = Course.course_id) EXCEPT (SELECT course_id FROM Class, Section WHERE Class.section_id = Section.id AND Class.person_id = NEW.person_id AND Class.grade_id >= 0.7)) THEN
+    IF EXISTS (SELECT Course.course_id FROM Section, Prerequisite, Course WHERE NEW.section_id = Section.id AND Section.course_id = Prerequisite.course_id AND Prerequisite.prerequisite_course_id = Course.course_id NOT IN (SELECT course_id FROM Class, Section WHERE Class.section_id = Section.id AND Class.person_id = NEW.person_id AND Class.grade_id >= 0.7)) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "invalid action: Student does not meet prereq requirements.";
     END IF;
 END$$
@@ -398,10 +400,10 @@ CREATE TRIGGER validate_student_advisor BEFORE INSERT ON StudentAdvisor FOR EACH
     END IF;
 END$$
 
---CREATE TRIGGER gpa_calculator AFTER INSERT ON Class FOR EACH ROW BEGIN
---UPDATE Student SET Student.gpa = (
+-- CREATE TRIGGER gpa_calculator AFTER INSERT ON Class FOR EACH ROW BEGIN
+-- UPDATE Student SET Student.gpa = (
 --
---)
---END$$
+-- ) 
+-- END$$
 
 DELIMITER ;
