@@ -1,4 +1,23 @@
 -- main project tables
+
+CREATE TABLE Address (
+    id INT UNSIGNED NOT NULL PRIMARY KEY,
+    civic_number INT UNSIGNED NOT NULL,
+    city INT UNSIGNED NOT NULL,
+    province CHAR(2) NOT NULL,
+    postal_code CHAR(100) NOT NULL
+);
+
+CREATE TABLE Person (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name CHAR(100) NOT NULL,
+    last_name CHAR(100) NOT NULL,
+    SSN INT UNSIGNED NOT NULL,
+    email_addr CHAR(100) NOT NULL,
+    phone_number INT UNSIGNED NOT NULL,
+    home_address_id INT UNSIGNED NOT NULL REFERENCES Address(id)
+);
+
 CREATE TABLE Campus (
     name CHAR(100) PRIMARY KEY
 );
@@ -9,27 +28,26 @@ CREATE TABLE Building (
     PRIMARY KEY(name, campus_name)
 );
 
--- two constraints: 1. has capacity > 0 only if lab or classroom
 CREATE TABLE Room (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     campus_name CHAR(100) REFERENCES Campus(name),
     building_name CHAR(100) REFERENCES Building(name),
     num INT UNSIGNED,
     capacity INT UNSIGNED DEFAULT 0,
-    room_type CHAR(100),
+    room_type CHAR(100), -- conference_room, office, classroom, laboratory...
     UNIQUE KEY (num, building_name, campus_name) -- only one room of number # per building per campus
 );
---
--- 2. has facilities only if lab or classroom
+
 CREATE TABLE Facilities (
     room_id INT NOT NULL REFERENCES Room(id),
-    facility CHAR(100),
+    facility CHAR(100), -- projector, computer, etc.
     PRIMARY KEY (room_id, facility)
 );
 
 
 CREATE TABLE Department (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    chairman_id INT NOT NULL REFERENCES Person(id),
     name CHAR(100) NOT NULL
 );
 
@@ -45,8 +63,7 @@ CREATE TABLE Program (
     degree ENUM("undergraduate", "graduate") NOT NULL,
     credit_req INT UNSIGNED NOT NULL DEFAULT 0,
     is_thesis_based BOOLEAN NOT NULL,
-    department_id INT NOT NULL,
-    CONSTRAINT FK_Department_Program FOREIGN KEY (department_id) REFERENCES Department(id)
+    department_id INT NOT NULL REFERENCES Department(id)
 );
 
 CREATE TABLE Course (
@@ -54,47 +71,23 @@ CREATE TABLE Course (
     name CHAR(100) NOT NULL,
     code CHAR(15) NOT NULL,
     number INT NOT NULL,
-    department_id INT NOT NULL,
-    CONSTRAINT FK_Department_Course FOREIGN KEY (department_id) REFERENCES Department(id)
-);
-
-CREATE TABLE Address (
-    id INT UNSIGNED NOT NULL PRIMARY KEY,
-    civic_number INT UNSIGNED NOT NULL,
-    city INT UNSIGNED NOT NULL,
-    province CHAR(2) NOT NULL,
-    postal_code CHAR(100) NOT NULL
-);
-
-CREATE TABLE Person_ID (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+    department_id INT NOT NULL REFERENCES Department(id)
 );
 
 CREATE TABLE Student (
-    person_id INT NOT NULL PRIMARY KEY REFERENCES Person_ID(id),
-    first_name CHAR(100) NOT NULL,
-    last_name CHAR(100) NOT NULL,
-    email_addr CHAR(100) NOT NULL,
-    home_address_id INT UNSIGNED NOT NULL REFERENCES Address(id),
-    SSN INT UNSIGNED NOT NULL,
-    phone_number INT UNSIGNED NOT NULL,
+    person_id INT NOT NULL PRIMARY KEY REFERENCES Person(id),
     gpa DECIMAL(3, 2) UNSIGNED NOT NULL,
     degree ENUM("undergraduate", "graduate") NOT NULL
 );
 
 CREATE TABLE Instructor (
-    person_id INT NOT NULL PRIMARY KEY REFERENCES Person_ID(id),
-    first_name CHAR(100) NOT NULL,
-    last_name CHAR(100) NOT NULL,
-    SSN INT UNSIGNED NOT NULL,
-    email_addr CHAR(100) NOT NULL,
-    phone_number INT UNSIGNED NOT NULL,
-    home_address_id INT UNSIGNED NOT NULL REFERENCES Address(id)
+    person_id INT NOT NULL PRIMARY KEY REFERENCES Person(id),
+    department_id INT NOT NULL REFERENCES Department(id)
 );
 
 -- needs triggers to verify: if it is university, check if student is graduate or it's a prof. if it is CEGEP/Secondary school, needs to be an undergraduate.
 CREATE TABLE StudentPastDegrees (
-    person_id INT NOT NULL REFERENCES Person_ID(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     institution CHAR(100) NOT NULL,
     school_type ENUM("CEGEP", "Secondary School", "University"),
     date_received DATE,
@@ -104,7 +97,7 @@ CREATE TABLE StudentPastDegrees (
 );
 
 CREATE TABLE IndustryExperience (
-    person_id INT NOT NULL REFERENCES Person_ID(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     company_name CHAR(100) NOT NULL,
     position_name CHAR(100) NOT NULL,
     date_started DATE,
@@ -114,20 +107,20 @@ CREATE TABLE IndustryExperience (
 );
 
 CREATE TABLE Publications (
-    person_id INT NOT NULL REFERENCES Person_ID(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     title CHAR(100) NOT NULL,
     journal_name CHAR(100) NOT NULL,
     date DATE NOT NULL
 );
 
 CREATE TABLE Awards(
-    person_id INT NOT NULL REFERENCES Person_ID(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     name CHAR(100) NOT NULL,
     date DATE NOT NULL
 );
 
 CREATE TABLE Salary(
-    person_id INT NOT NULL REFERENCES Person_ID(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     salary INT UNSIGNED NOT NULL,
     date_started DATE NOT NULL,
     date_ended DATE NOT NULL
@@ -136,125 +129,126 @@ CREATE TABLE Salary(
 -- renamed TeachingAssistant to Contracts to meet requirements
 CREATE TABLE Contract(
     name char(100) NOT NULL, -- eg "marker", "instructor", "ta"
-    course_name char(100) NOT NULL,
-    person_id INT NOT NULL,
+    course_name char(100) NOT NULL REFERENCES Course(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     section_id INT NOT NULL,
     num_hours INT NOT NULL,
     total_salary INT NOT NULL,
-    PRIMARY KEY (person_id, section_id),
-    CONSTRAINT FK_Student_Contract FOREIGN KEY (person_id) REFERENCES Person_ID(id),
-    CONSTRAINT FK_Course_Contract FOREIGN KEY (section_id) REFERENCES Course(id)
+    PRIMARY KEY (person_id, section_id)
 );
--- needs trigger to verify student is TA for that section
+
+-- TODO: needs trigger to verify student is TA for that section
 CREATE TABLE TA_Assignments (
-    person_id INT NOT NULL REFERENCES Person_ID(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     section_id INT NOT NULL REFERENCES Section(id),
-    name CHAR(100)
+    name CHAR(100) -- TODO: need additional content other than assignment name
 );
 
 CREATE TABLE Grade (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    letter_grade CHAR(5) NOT NULL,
-    gpa DECIMAL(3,2) NOT NULL
+    gpa DECIMAL(3,2) NOT NULL,
+    out_of_100 INTEGER NOT NULL,
+    letter_grade CHAR(5) NOT NULL
 );
+
+-- starting from highest worth, if you are out_of_100 or above, you get letter_grade, worth gpa.
+INSERT INTO Grade VALUES (4.3, 90, "A+"), (4, 85, "A"), (3.7, 80, "A-"), (3.3, 77, "B+"), (3, 73, "B"), (2.7, 70, "B-"), (2.3, 67, "C+"), (2, 63, "C"), (1.7, 60, "C-"), (1.3, 57, "D+"), (1, 53, "D"), (0.7, 50, "D-"), (0.0, 0, "FAIL");
+
+
+CREATE TABLE IF NOT EXISTS func(grade CHAR(5), grade_gpa DECIMAL(3, 2));
+DELETE FROM func;
+INSERT INTO func VALUES ("F", 0.0);
+
+DELIMITER $$
+CREATE FUNCTION get_grade_letter (my_grade INTEGER) RETURNS CHAR(5)
+BEGIN
+    UPDATE func SET grade = (SELECT letter_grade FROM Grade WHERE my_grade >= Grade.out_of_100 LIMIT 1);
+    RETURN (SELECT grade FROM func LIMIT 1);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE FUNCTION get_gpa (my_grade INTEGER) RETURNS DECIMAL(3, 2)
+BEGIN
+    UPDATE func SET grade_gpa = (SELECT gpa FROM Grade WHERE my_grade >= Grade.out_of_100 LIMIT 1);
+    RETURN (SELECT grade_gpa FROM func LIMIT 1);
+END$$
+DELIMITER ;
 
 CREATE TABLE Section (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    course_id INT NOT NULL,
-    term_id INT NOT NULL,
-    person_id INT NOT NULL,
+    course_id INT NOT NULL REFERENCES Course(id),
+    term_id INT NOT NULL REFERENCES Term(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     classroom_id INT UNSIGNED REFERENCES Room(id),
     capacity INT NOT NULL,
     start_time TIME NOT NULL,
-    end_time TIME NOT NULL,
-    CONSTRAINT FK_Course_Section FOREIGN KEY (course_id) REFERENCES Course(id),
-    CONSTRAINT FK_Term_Section FOREIGN KEY (term_id) REFERENCES Term(id),
-    CONSTRAINT FK_Instructor_Section FOREIGN KEY (person_id) REFERENCES Person_ID(id)
+    end_time TIME NOT NULL
 );
 
 CREATE TABLE Class (
-    person_id INT NOT NULL,
-    section_id INT NOT NULL,
-    grade_id INT NOT NULL,
-    PRIMARY KEY (person_id, section_id),
-    CONSTRAINT FK_Student_Class FOREIGN KEY (person_id) REFERENCES Person_ID(id),
-    CONSTRAINT FK_Section_Class FOREIGN KEY (section_id) REFERENCES Section(id),
-    CONSTRAINT FK_Grade_Class FOREIGN KEY (grade_id) REFERENCES Grade(id)
+    person_id INT NOT NULL REFERENCES Person(id),
+    section_id INT NOT NULL REFERENCES Section(id),
+    grade INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (person_id, section_id)
 );
 
 CREATE TABLE StudentProgram (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    person_id INT NOT NULL,
-    program_id INT NOT NULL,
-    CONSTRAINT FK_Student_StudentProgram FOREIGN KEY (person_id) REFERENCES Person_ID(id),
-    CONSTRAINT FK_Program_StudentProgram FOREIGN KEY (program_id) REFERENCES Program(id)
+    person_id INT NOT NULL REFERENCES Person(id),
+    program_id INT NOT NULL REFERENCES Program(id),
+    PRIMARY KEY (person_id, program_id)
 );
 
 CREATE TABLE ResearchFunding (
-    person_id INT PRIMARY KEY,
-    CONSTRAINT FK_Student_ResearchFunding FOREIGN KEY (person_id) REFERENCES Person_ID(id)
+    person_id INT PRIMARY KEY REFERENCES Person(id),
+    amount FLOAT(8,2) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE Prerequisite (
-    course_id INT NOT NULL,
-    prerequisite_course_id INT NOT NULL,
-    PRIMARY KEY (course_id, prerequisite_course_id),
-    CONSTRAINT FK_Course_Prequisite_Base FOREIGN KEY (course_id) REFERENCES Course(id),
-    CONSTRAINT FK_Course_Prequisite FOREIGN KEY (prerequisite_course_id) REFERENCES Course(id)
+    course_id INT NOT NULL REFERENCES Course(id),
+    prerequisite_course_id INT NOT NULL REFERENCES Course(id),
+    PRIMARY KEY (course_id, prerequisite_course_id)
 );
 
 CREATE TABLE StudentDepartment (
-    person_id INT NOT NULL,
-    department_id INT NOT NULL,
-    PRIMARY KEY (person_id, department_id),
-    CONSTRAINT FK_Student_StudentDepartment FOREIGN KEY (person_id) REFERENCES Person_ID(id),
-    CONSTRAINT FK_Department_StudentDepartment FOREIGN KEY (department_id) REFERENCES Department(id)
+    person_id INT NOT NULL REFERENCES Person(id),
+    department_id INT NOT NULL REFERENCES Department(id),
+    PRIMARY KEY (person_id, department_id)
 );
 
 CREATE TABLE InstructorDepartment (
-    person_id INT NOT NULL,
-    department_id INT NOT NULL,
-    PRIMARY KEY (person_id, department_id),
-    CONSTRAINT FK_Instructor_InstructorDepartment FOREIGN KEY (person_id) REFERENCES Person_ID(id),
-    CONSTRAINT FK_Department_InstructorDepartment FOREIGN KEY (department_id) REFERENCES Department(id)
+    person_id INT NOT NULL REFERENCES Person(id),
+    department_id INT NOT NULL REFERENCES Department(id),
+    PRIMARY KEY (person_id, department_id)
 );
 
--- needs trigger: verify advisor is an instructor
 CREATE TABLE Advisor (
-    id INT NOT NULL PRIMARY KEY,
-    first_name CHAR(100) NOT NULL,
-    last_name CHAR(100) NOT NULL,
-    CONSTRAINT FK_Advisor_Person FOREIGN KEY (id) REFERENCES Person_ID(id)
+    person_id INT NOT NULL REFERENCES Person(id),
+    program_id INT NOT NULL REFERENCES Program(id),
+    term_id INT NOT NULL REFERENCES Term(id),
+    PRIMARY KEY (person_id, program_id, term_id)
 );
 
--- additional trigger: student's program is in the advisor's department
 CREATE TABLE StudentAdvisor (
-    student_program_id INT NOT NULL,
-    advisor_id INT NOT NULL,
-    term_id INT NOT NULL,
-    CONSTRAINT FK_StudentProgram_StudentAdvisor FOREIGN KEY (student_program_id) REFERENCES StudentProgram(id),
-    CONSTRAINT FK_Advisor_StudentAdvisor FOREIGN KEY (advisor_id) REFERENCES Advisor(id),
-    CONSTRAINT FK_Term_StudentAdvisor FOREIGN KEY (term_id) REFERENCES Term(id)
+    student_id INT NOT NULL REFERENCES Person(id),
+    advisor_id INT NOT NULL REFERENCES Person(id),
+    term_id INT NOT NULL REFERENCES Term(id),
+    PRIMARY KEY (student_id, advisor_id, term_id)
 );
 
 CREATE TABLE Supervisor (
-    person_id INT NOT NULL PRIMARY KEY,
+    person_id INT NOT NULL PRIMARY KEY REFERENCES Person(id),
     first_name CHAR(100) NOT NULL,
     last_name CHAR(100) NOT NULL,
     department_id INT NOT NULL,
-    has_research_funding BOOLEAN NOT NULL,
-    CONSTRAINT FK_Supervisor_Person FOREIGN KEY (person_id) REFERENCES Person_ID(id)
+    has_research_funding BOOLEAN NOT NULL -- TODO: change this.
 );
 
 CREATE TABLE StudentSupervisor (
-    person_id INT NOT NULL,
-    supervisor_id INT NOT NULL,
-    granted_funding BOOLEAN DEFAULT FALSE,
-    PRIMARY KEY (person_id, supervisor_id),
-    CONSTRAINT FK_Student_StudentSupervisor FOREIGN KEY (person_id) REFERENCES Person_ID(id),
-    CONSTRAINT FK_Supervisor_StudentSupervisor FOREIGN KEY (supervisor_id) REFERENCES Supervisor(person_id)
+    person_id INT NOT NULL     REFERENCES Person(id),
+    supervisor_id INT NOT NULL REFERENCES Supervisor(person_id),
+    granted_funding BOOLEAN DEFAULT FALSE, -- TODO: change this.
+    PRIMARY KEY (person_id, supervisor_id)
 );
-
 
 -- triggers
 DELIMITER $$
@@ -278,9 +272,9 @@ END$$
 DELIMITER $$
 CREATE TRIGGER passing_grade_prereqs BEFORE INSERT ON Class FOR EACH ROW
 BEGIN
-    IF EXISTS (SELECT gpa FROM Grade, Class, Section, Course, Prerequisite WHERE
-    NEW.section_id = Section.id AND NEW.person_id = Class.person_id AND Section.course_id = Prerequisite.course_id AND Class.grade_id = Grade.id AND gpa < 0.7) THEN
-    SET NEW.person_id = -1;
+    -- doing set difference: if there remains classes in the prereqs such that student didn't take it and pass, reject this signup to the course.
+    IF EXISTS ((SELECT Course.course_id FROM Section, Prerequisite, Course WHERE NEW.section_id = Section.id AND Section.course_id = Prerequisite.course_id AND Prerequisite.prerequisite_course_id = Course.course_id) EXCEPT (SELECT course_id FROM Class, Section WHERE Class.section_id = Section.id AND Class.person_id = NEW.person_id AND Class.grade_id >= 0.7)) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "invalid action: Student does not meet prereq requirements.";
     END IF;
 END$$
 
@@ -347,5 +341,63 @@ BEGIN
     END IF;
 END$$
 
+DELIMITER $$
+CREATE TRIGGER lab_or_classroom_capacity BEFORE INSERT ON Room FOR EACH ROW
+BEGIN
+    IF NEW.capacity IS NOT NULL THEN
+        IF NEW.capacity <= 0 AND (NEW.room_type = "laboratory" OR NEW.room_type = "classroom") THEN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Lab or Classroom must have a capacity > 0";
+        END IF;
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Lab or Classroom must have non null capacity";
+    END IF;
+END$$
+
+DELIMITER $$
+CREATE TRIGGER lab_or_classroom_facilities BEFORE INSERT ON Facilities FOR EACH ROW BEGIN
+    IF NOT EXISTS(SELECT * FROM Room WHERE Room.id = NEW.room_id AND (Room.room_type = "classroom" OR Room.room_type = "laboratory")) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Only Lab or Classroom are allowed to have facilities. Either this room doesn't exist or isn't a lab/classroom";
+    END IF;
+END$$
+
+DELIMITER $$
+CREATE TRIGGER thesis_based_program_must_be_grad AFTER INSERT ON Program FOR EACH ROW BEGIN
+    IF NEW.is_thesis_based IS TRUE AND NEW.degree = "undergraduate" THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Only grad programs may be thesis based";
+    END IF;
+END$$
+
+DELIMITER $$
+CREATE TRIGGER student_program_matching_degree BEFORE INSERT ON StudentProgram FOR EACH ROW BEGIN
+    IF NOT EXISTS(Select * FROM Student, Program WHERE Student.person_id = NEW.person_id AND Program.id = New.program_id AND Student.degree = Program.degree) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Student degree type is incompatible with program degree type. Make sure both are undergrad or both are grad.";
+    END IF;
+END$$
+
+DELIMITER $$
+CREATE TRIGGER verify_advisor_is_instructor BEFORE INSERT ON Advisor FOR EACH ROW BEGIN
+    IF NOT EXISTS(Select * FROM Instructor WHERE Instructor.person_id = NEW.person_id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "This person cannot be an Advisor as he/she is not an instructor.";
+    END IF;
+END$$
+
+DELIMITER $$
+CREATE TRIGGER validate_student_advisor BEFORE INSERT ON StudentAdvisor FOR EACH ROW BEGIN
+    IF NOT EXISTS(Select * FROM Instructor WHERE Instructor.person_id = NEW.advisor_id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "The given advisor is not actually an advisor.";
+    END IF;
+    IF NOT EXISTS(Select * FROM Student WHERE Student.person_id = NEW.student_id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "The given student is not actually a student.";
+    END IF;
+    IF NOT EXISTS(Select * FROM StudentProgram, Instructor WHERE StudentProgram.person_id = NEW.student_id AND Instructor.person_id = New.advisor_id AND StudentProgram.program_id = Program.id AND Program.department_id = Instructor.department_id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "The given student isn't in a program that is supervised by this advisor.";
+    END IF;
+END$$
+
+--CREATE TRIGGER gpa_calculator AFTER INSERT ON Class FOR EACH ROW BEGIN
+--UPDATE Student SET Student.gpa = (
+--
+--)
+--END$$
 
 DELIMITER ;

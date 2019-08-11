@@ -1,5 +1,5 @@
 SET SQL_SAFE_UPDATES = 0;
-
+-- add funding table for different funding
 DELETE FROM StudentSupervisor;
 DELETE FROM Supervisor;
 DELETE FROM StudentAdvisor;
