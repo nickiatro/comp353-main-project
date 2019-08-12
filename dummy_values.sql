@@ -93,44 +93,44 @@ INSERT INTO Facilities (room_id, facility) VALUES
 (@MB535, 'Projector');
 
 INSERT INTO Person (first_name, last_name, SSN, email_addr, phone_number, home_address_id) VALUES 
-('Blakelee', 'Littler', '680-53-1677', 'blittler0@jalbum.net', '843-685-7241', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Ruth', 'Anselm', '244-31-5513', 'ranselm1@bizjournals.com', '451-593-4535', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Marleah', 'Winterbourne', '111-94-4892', 'mwinterbourne2@cloudflare.com', '793-484-7875', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Claudina', 'Lennie', '879-69-8234', 'clennie3@yolasite.com', '751-551-8546', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Dody', 'Noor', '540-09-0346', 'dnoor4@qq.com', '440-374-8502', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Hobie', 'Corssen', '234-74-3741', 'hcorssen5@ted.com', '653-946-3600', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Galven', 'Gambrell', '774-81-4118', 'ggambrell6@vistaprint.com', '899-822-5412', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Chelsy', 'Fripps', '467-18-0793', 'cfripps7@buzzfeed.com', '697-636-8503', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Jabez', 'Gallen', '322-33-9780', 'jgallen8@nsw.gov.au', '873-739-8977', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Kain', 'Snedden', '160-78-0182', 'ksnedden9@samsung.com', '203-780-1973', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Ericka', 'McAvinchey', '872-29-5693', 'emcavincheya@de.vu', '786-658-6421', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Lindsy', 'Speers', '822-51-7742', 'lspeersb@zimbio.com', '866-141-8088', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Noach', 'Crotch', '197-96-1919', 'ncrotchc@istockphoto.com', '355-543-5435', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Ernest', 'Fenner', '363-03-8959', 'efennerd@house.gov', '889-407-4313', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Hugo', 'Tumulty', '430-96-0938', 'htumultye@sakura.ne.jp', '791-941-1369', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Laurence', 'Palomba', '419-55-6084', 'lpalombaf@zimbio.com', '305-405-6975', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Donalt', 'McKennan', '638-89-2387', 'dmckennang@feedburner.com', '225-849-8523', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Kimbra', 'Degenhardt', '558-26-4939', 'kdegenhardth@theatlantic.com', '343-620-5625', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Margaretha', 'Orteau', '388-48-1508', 'morteaui@ca.gov', '604-603-6097', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Helga', 'Moakes', '418-12-0787', 'hmoakesj@hhs.gov', '373-181-3007', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Frederique', 'Cheavin', '492-37-3359', 'fcheavink@ed.gov', '104-107-2475', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Koo', 'Matovic', '681-69-6173', 'kmatovicl@deliciousdays.com', '419-160-9670', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Kora', 'Peckitt', '667-74-6610', 'kpeckittm@joomla.org', '933-176-3287', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Kristopher', 'Pressland', '425-18-8618', 'kpresslandn@imgur.com', '842-999-2856', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Germain', 'Earles', '711-62-6657', 'gearleso@plala.or.jp', '645-205-3582', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Nat', 'Landy', '488-43-4797', 'nlandyp@studiopress.com', '252-885-1105', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Melissa', 'Roubeix', '860-95-7612', 'mroubeixq@who.int', '434-585-1593', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Ilse', 'Hun', '363-45-6841', 'ihunr@webeden.co.uk', '705-743-3344', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Jared', 'Eyeington', '452-79-3446', 'jeyeingtons@shop-pro.jp', '298-327-5381', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Cathy', 'Wildbore', '370-91-4173', 'cwildboret@taobao.com', '161-407-6136', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Alisha', 'Ehrat', '856-62-4964', 'aehratu@amazon.co.jp', '543-366-8792', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Mia', 'Lidgett', '631-04-2806', 'mlidgettv@nhs.uk', '481-797-6138', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Arlinda', 'Vasilyev', '350-02-3431', 'avasilyevw@sfgate.com', '453-304-6037', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Maximo', 'Waterhowse', '861-34-8489', 'mwaterhowsex@tripadvisor.com', '545-835-7650', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Harbert', 'Gaitung', '345-14-4466', 'hgaitungy@sciencedaily.com', '806-506-7832', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Raine', 'Dundon', '184-95-6192', 'rdundonz@nasa.gov', '186-152-5184', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Larina', 'Hyatt', '311-28-5276', 'lhyatt10@imageshack.us', '478-260-8395', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Blisse', 'Luby', '166-13-8699', 'bluby11@narod.ru', '954-593-0111', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Brendan', 'Littler', '680-53-1677', 'blittler0@jalbum.net', '843-685-7241', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Leto', 'Anselm', '244-31-5513', 'ranselm1@bizjournals.com', '451-593-4535', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Duncan', 'Winterbourne', '111-94-4892', 'mwinterbourne2@cloudflare.com', '793-484-7875', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Vladimir', 'Lennie', '879-69-8234', 'clennie3@yolasite.com', '751-551-8546', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Piter', 'Noor', '540-09-0346', 'dnoor4@qq.com', '440-374-8502', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('John', 'Corssen', '234-74-3741', 'hcorssen5@ted.com', '653-946-3600', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Russell', 'Gambrell', '774-81-4118', 'ggambrell6@vistaprint.com', '899-822-5412', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Guillermo', 'Fripps', '467-18-0793', 'cfripps7@buzzfeed.com', '697-636-8503', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Alex', 'Gallen', '322-33-9780', 'jgallen8@nsw.gov.au', '873-739-8977', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Gary', 'Snedden', '160-78-0182', 'ksnedden9@samsung.com', '203-780-1973', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Olivia', 'McAvinchey', '872-29-5693', 'emcavincheya@de.vu', '786-658-6421', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Odafin', 'Speers', '822-51-7742', 'lspeersb@zimbio.com', '866-141-8088', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Amanda', 'Crotch', '197-96-1919', 'ncrotchc@istockphoto.com', '355-543-5435', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Dominick', 'Fenner', '363-03-8959', 'efennerd@house.gov', '889-407-4313', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Elliot', 'Tumulty', '430-96-0938', 'htumultye@sakura.ne.jp', '791-941-1369', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Don', 'Palomba', '419-55-6084', 'lpalombaf@zimbio.com', '305-405-6975', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Maximina', 'McKennan', '638-89-2387', 'dmckennang@feedburner.com', '225-849-8523', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Laurel', 'Degenhardt', '558-26-4939', 'kdegenhardth@theatlantic.com', '343-620-5625', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Nada', 'Orteau', '388-48-1508', 'morteaui@ca.gov', '604-603-6097', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Eliseo', 'Moakes', '418-12-0787', 'hmoakesj@hhs.gov', '373-181-3007', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Mario', 'Cheavin', '492-37-3359', 'fcheavink@ed.gov', '104-107-2475', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Petey', 'Matovic', '681-69-6173', 'kmatovicl@deliciousdays.com', '419-160-9670', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Anna', 'Peckitt', '667-74-6610', 'kpeckittm@joomla.org', '933-176-3287', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Vinny', 'Pressland', '425-18-8618', 'kpresslandn@imgur.com', '842-999-2856', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Joyce', 'Earles', '711-62-6657', 'gearleso@plala.or.jp', '645-205-3582', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Cliff', 'Landy', '488-43-4797', 'nlandyp@studiopress.com', '252-885-1105', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Earl', 'Roubeix', '860-95-7612', 'mroubeixq@who.int', '434-585-1593', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Cooke', 'Hun', '363-45-6841', 'ihunr@webeden.co.uk', '705-743-3344', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Jen', 'Eyeington', '452-79-3446', 'jeyeingtons@shop-pro.jp', '298-327-5381', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Reanne', 'Wildbore', '370-91-4173', 'cwildboret@taobao.com', '161-407-6136', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Paul', 'Ehrat', '856-62-4964', 'aehratu@amazon.co.jp', '543-366-8792', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Chris', 'Lidgett', '631-04-2806', 'mlidgettv@nhs.uk', '481-797-6138', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Gio', 'Vasilyev', '350-02-3431', 'avasilyevw@sfgate.com', '453-304-6037', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Caire', 'Waterhowse', '861-34-8489', 'mwaterhowsex@tripadvisor.com', '545-835-7650', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Marsha', 'Gaitung', '345-14-4466', 'hgaitungy@sciencedaily.com', '806-506-7832', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Manny', 'Dundon', '184-95-6192', 'rdundonz@nasa.gov', '186-152-5184', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Val', 'Hyatt', '311-28-5276', 'lhyatt10@imageshack.us', '478-260-8395', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
+('Lucy', 'Luby', '166-13-8699', 'bluby11@narod.ru', '954-593-0111', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
 ('Field', 'Trethewey', '204-84-8997', 'ftrethewey12@moonfruit.com', '617-398-2808', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
 ('Brien', 'Scottini', '206-16-4969', 'bscottini13@addthis.com', '620-498-0262', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
 ('Raina', 'Aronowicz', '410-47-6801', 'raronowicz14@indiegogo.com', '374-580-5422', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
@@ -142,19 +142,59 @@ INSERT INTO Person (first_name, last_name, SSN, email_addr, phone_number, home_a
 ('Annabela', 'Lympenie', '728-59-3088', 'alympenie1a@yahoo.com', '850-198-3728', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
 ('Harrietta', 'Polino', '696-96-1869', 'hpolino1b@upenn.edu', '346-317-2729', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
 ('Andrea', 'Slimings', '718-88-7433', 'aslimings1c@cdbaby.com', '678-762-0135', (SELECT id FROM Address ORDER BY RAND() LIMIT 1)),
-('Lolita', 'Grassin', '813-67-2785', 'lgrassin1d@arstechnica.com', '747-691-2662', (SELECT id FROM Address ORDER BY RAND() LIMIT 1))
+('Lolita', 'Grassin', '813-67-2785', 'lgrassin1d@arstechnica.com', '747-691-2662', (SELECT id FROM Address ORDER BY RAND() LIMIT 1));
 
-INSERT INTO Department(name)
-VALUES ('Mathematics'),
-       ('Computer Science and Engineering'),
-       ('Biology'),
-       ('Physics'),
-       ('Chemistry'),
-       ('Humanities'),
-       ('Business'),
-       ('Social Sciences'),
-       ('History'),
-       ('Education');
+-- Instructor / chairman variables
+SET @brendan := (SELECT id FROM Person WHERE first_name = 'Brendan');
+SET @leto := (SELECT id FROM Person WHERE first_name = 'Leto');
+SET @duncan := (SELECT id FROM Person WHERE first_name = 'Duncan');
+SET @vladimir := (SELECT id FROM Person WHERE first_name = 'Vladimir');
+SET @piter := (SELECT id FROM Person WHERE first_name = 'Piter');
+SET @john := (SELECT id FROM Person WHERE first_name = 'John');
+SET @russell := (SELECT id FROM Person WHERE first_name = 'Russell');
+SET @guillermo := (SELECT id FROM Person WHERE first_name = 'Guillermo');
+SET @alex := (SELECT id FROM Person WHERE first_name = 'Alex');
+SET @gary := (SELECT id FROM Person WHERE first_name = 'Gary');
+
+-- Student variables
+SET @olivia := (SELECT id FROM Person WHERE first_name = 'Olivia');
+SET @odafin := (SELECT id FROM Person WHERE first_name = 'Odafin');
+SET @amanda := (SELECT id FROM Person WHERE first_name = 'Amanda');
+SET @dominick := (SELECT id FROM Person WHERE first_name = 'Dominick');
+SET @elliot := (SELECT id FROM Person WHERE first_name = 'Elliot');
+SET @don := (SELECT id FROM Person WHERE first_name = 'Don');
+SET @maximina := (SELECT id FROM Person WHERE first_name = 'Maximina');
+SET @laurel := (SELECT id FROM Person WHERE first_name = 'Laurel');
+SET @nada := (SELECT id FROM Person WHERE first_name = 'Nada');
+SET @eliseo := (SELECT id FROM Person WHERE first_name = 'Eliseo');
+SET @mario := (SELECT id FROM Person WHERE first_name = 'Mario');
+SET @petey := (SELECT id FROM Person WHERE first_name = 'Petey');
+SET @anna := (SELECT id FROM Person WHERE first_name = 'Anna');
+SET @vinny := (SELECT id FROM Person WHERE first_name = 'Vinny');
+SET @joyce := (SELECT id FROM Person WHERE first_name = 'Joyce');
+SET @cliff := (SELECT id FROM Person WHERE first_name = 'Cliff');
+SET @earl := (SELECT id FROM Person WHERE first_name = 'Earl');
+SET @cooke := (SELECT id FROM Person WHERE first_name = 'Cooke');
+SET @jen := (SELECT id FROM Person WHERE first_name = 'Jen');
+SET @reanne := (SELECT id FROM Person WHERE first_name = 'Reanne');
+SET @paul := (SELECT id FROM Person WHERE first_name = 'Paul');
+SET @chris := (SELECT id FROM Person WHERE first_name = 'Chris');
+SET @gio := (SELECT id FROM Person WHERE first_name = 'Gio');
+SET @caire := (SELECT id FROM Person WHERE first_name = 'Caire');
+SET @marsha := (SELECT id FROM Person WHERE first_name = 'Marsha');
+SET @lucy := (SELECT id FROM Person WHERE first_name = 'Lucy');
+
+INSERT INTO Department(name, chairman_id)
+VALUES ('Mathematics', @brendan),
+       ('Computer Science and Engineering', @leto),
+       ('Biology', @duncan),
+       ('Physics', @vladimir),
+       ('Chemistry', @piter),
+       ('Humanities', @john),
+       ('Business', @russell),
+       ('Social Sciences', @guillermo),
+       ('History', @alex),
+       ('Education', @gary);
 
 -- Department variables
 SET @mathematics := (SELECT id FROM Department WHERE name = 'Mathematics');
@@ -243,178 +283,198 @@ SET @comp248 := (SELECT id FROM Course WHERE code = 'COMP' AND number = 248);
 SET @comp249 := (SELECT id FROM Course WHERE code = 'COMP' AND number = 249);
 SET @comp348 := (SELECT id FROM Course WHERE code = 'COMP' AND number = 348);
 
-INSERT INTO Student(first_name, last_name, gpa, degree)
-VALUES ('Olivia', 'Benson', 3.0, 'graduate'),
-       ('Odafin', 'Tutuola', 2.2, 'graduate'),
-       ('Amanda', 'Rollins', 3.2, 'graduate'),
-       ('Dominick', 'Carisi', 2.8, 'graduate'),
-       ('Elliot', 'Stabler', 3.0, 'graduate'),
-       ('Don', 'Cragen', 4.3, 'graduate'),
-       ('Maximina', 'Specht', 2.0, 'graduate'),
-       ('Laurel', 'Sherrod', 3.3, 'graduate'),
-       ('Nada', 'Dillard', 3.6, 'graduate'),
-       ('Eliseo', 'Piano', 3.3, 'graduate'),
-       ('Mario', 'Speedwagon', 3.3, 'undergraduate'),
-       ('Petey', 'Cruiser', 3.3, 'undergraduate'),
-       ('Anna', 'Sthesia', 2.3, 'undergraduate'),
+INSERT INTO Student(person_id, gpa, degree)
+VALUES (@olivia, 3.0, 'graduate'),
+       (@odafin, 2.2, 'undergraduate'),
+       (@amanda, 3.2, 'graduate'),
+       (@dominick, 2.8, 'undergraduate'),
+       (@elliot, 3.0, 'undergraduate'),
+       (@don, 4.3, 'graduate'),
+       (@maximina, 2.0, 'undergraduate'),
+       (@laurel, 3.3, 'undergraduate'),
+       (@nada, 3.6, 'graduate'),
+       (@eliseo, 3.3, 'graduate'),
+       (@mario, 3.3, 'graduate'),
+       (@petey, 3.3, 'graduate'),
+       (@anna, 3.3, 'graduate'),
+       (@vinny, 3.3, 'graduate'),
+       (@joyce, 3.3, 'graduate'),
+       (@cliff, 3.3, 'graduate'),
+       (@earl, 3.3, 'graduate'),
+       (@cooke, 3.3, 'graduate'),
+       (@jen, 3.3, 'graduate'),
+       (@reanne, 3.3, 'graduate'),
+       (@paul, 3.3, 'graduate'),
+       (@chris, 3.3, 'graduate'),
+       (@gio, 3.3, 'graduate'),
+       (@caire, 3.3, 'graduate'),
+       (@marsha, 3.3, 'graduate');
 
-       ('Vinny', 'Gret', 3.3, 'graduate'),
-       ('Joyce', 'Tick', 3.3, 'graduate'),
-       ('Cliff', 'Diver', 3.3, 'graduate'),
-       ('Earl', 'Riser', 3.3, 'graduate'),
-       ('Cooke', 'Edoh', 3.3, 'graduate'),
+INSERT INTO Instructor(person_id, department_id) VALUES
+(@brendan, @computer_science),
+(@leto, @computer_science),
+(@duncan, @computer_science),
+(@vladimir, @computer_science),
+(@piter, @computer_science),
+(@john, @computer_science),
+(@russell, @computer_science),
+(@guillermo, @computer_science),
+(@alex, @computer_science),
+(@gary, @computer_science);
 
-       ('Jen', 'Youfelct', 3.3, 'graduate'),
-       ('Reanne', 'Carnation', 3.3, 'graduate'),
-       ('Paul', 'Misunday', 3.3, 'graduate'),
-       ('Chris', 'Cream', 3.3, 'graduate'),
-       ('Gio', 'Metric', 3.3, 'graduate'),
+INSERT INTO StudentPastDegrees (person_id, institution, school_type, date_received, degree_name, average) VALUES
+(@olivia, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.0),
+(@odafin, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 2.2),
+(@amanda, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.2),
+(@dominick, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 2.8),
+(@elliot, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.0),
+(@don, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 4.3),
+(@maximina, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 2.0),
+(@laurel, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@nada, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.6),
+(@eliseo, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3), 
+(@mario, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@petey, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@anna, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@vinny, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@joyce, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@cliff, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@earl, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@cooke, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@jen, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@reanne, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3), 
+(@paul, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@chris, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@gio, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@caire, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3),
+(@marsha, 'Vanier', 'CEGEP', '2018-12-17', 'DEC', 3.3); 
 
-       ('Caire', 'Innet', 3.3, 'graduate'),
-       ('Marsha', 'Mello', 3.3, 'graduate'),
-       ('Manny', 'Petty', 3.3, 'graduate'),
-       ('Val', 'Adictorian', 3.3, 'graduate'),
-       ('Lucy', 'Tania', 3.3, 'graduate');
+INSERT INTO IndustryExperience (person_id, company_name, position_name, date_started, date_ended) VALUES
+(@brendan, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@leto, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@duncan, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@vladimir, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@piter, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@john, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@russell, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@guillermo, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@alex, 'McGill', 'Professor', '2015-12-17', '2018-12-17'),
+(@gary, 'McGill', 'Professor', '2015-12-17', '2018-12-17');
 
--- Student variables
-SET @olivia := (SELECT id FROM Student WHERE first_name = 'Olivia');
-SET @odafin := (SELECT id FROM Student WHERE first_name = 'Odafin');
-SET @amanda := (SELECT id FROM Student WHERE first_name = 'Amanda');
-SET @dominick := (SELECT id FROM Student WHERE first_name = 'Dominick');
-SET @elliot := (SELECT id FROM Student WHERE first_name = 'Elliot');
-SET @don := (SELECT id FROM Student WHERE first_name = 'Don');
-SET @maximina := (SELECT id FROM Student WHERE first_name = 'Maximina');
-SET @laurel := (SELECT id FROM Student WHERE first_name = 'Laurel');
-SET @nada := (SELECT id FROM Student WHERE first_name = 'Nada');
-SET @eliseo := (SELECT id FROM Student WHERE first_name = 'Eliseo');
-SET @mario := (SELECT id FROM Student WHERE first_name = 'Mario');
-SET @petey := (SELECT id FROM Student WHERE first_name = 'Petey');
-SET @anna := (SELECT id FROM Student WHERE first_name = 'Anna');
-SET @paul := (SELECT id FROM Student WHERE first_name = 'Paul');
-SET @Vinny := (SELECT id FROM Student WHERE first_name = 'Vinny');
-SET @Joyce := (SELECT id FROM Student WHERE first_name = 'Joyce');
-SET @Cliff := (SELECT id FROM Student WHERE first_name = 'Cliff');
-SET @Earl := (SELECT id FROM Student WHERE first_name = 'Earl');
-SET @Cooke := (SELECT id FROM Student WHERE first_name = 'Cooke');
-SET @Jen := (SELECT id FROM Student WHERE first_name = 'Jen');
-SET @Reanne := (SELECT id FROM Student WHERE first_name = 'Reanne');
-SET @Paul := (SELECT id FROM Student WHERE first_name = 'Paul');
-SET @Chris := (SELECT id FROM Student WHERE first_name = 'Chris');
-SET @Gio := (SELECT id FROM Student WHERE first_name = 'Gio');
-SET @Caire := (SELECT id FROM Student WHERE first_name = 'Caire');
-SET @Marsha := (SELECT id FROM Student WHERE first_name = 'Marsha');
-SET @Manny := (SELECT id FROM Student WHERE first_name = 'Manny');
-SET @Val := (SELECT id FROM Student WHERE first_name = 'Val');
-SET @Lucy := (SELECT id FROM Student WHERE first_name = 'Lucy');
+INSERT INTO Salary (person_id, salary, date_started, date_ended) VALUES
+(@brendan, 150000, '2015-12-17', '2018-12-17'),
+(@leto, 150000, '2015-12-17', '2018-12-17'),
+(@duncan, 150000, '2015-12-17', '2018-12-17'),
+(@vladimir, 150000, '2015-12-17', '2018-12-17'),
+(@piter, 150000, '2015-12-17', '2018-12-17'),
+(@john, 150000, '2015-12-17', '2018-12-17'),
+(@russell, 150000, '2015-12-17', '2018-12-17'),
+(@guillermo, 150000, '2015-12-17', '2018-12-17'),
+(@alex, 150000, '2015-12-17', '2018-12-17'),
+(@gary, 150000, '2015-12-17', '2018-12-17');
 
-INSERT INTO Instructor(first_name, last_name)
-VALUES ('Brendan', 'Atreides'),
-       ('Leto', 'Atreides'),
-       ('Duncan', 'Idaho'),
-       ('Vladimir', 'Harkonnen'),
-       ('Piter', 'de Vries'),
-       ('John', 'Smith'),
-       ('Russell', 'Alessi'),
-       ('Guillermo', 'Wintheiser'),
-       ('Alex', 'Lee'),
-       ('Gary', 'Lee');
+INSERT INTO Publications  (person_id, title, journal_name, date) VALUES
+(@brendan, 'Girl With Silver', 'Harvard Business Review', '2018-01-01'),
+(@leto, 'Thief Of The River', 'Harvard Business Review', '2018-01-01'),
+(@duncan, 'Blacksmiths Of The North', 'Harvard Business Review', '2018-01-01'),
+(@vladimir, 'Humans Of Nightmares', 'Harvard Business Review', '2018-01-01'),
+(@piter, 'Heirs and Trees', 'Harvard Business Review', '2018-01-01'),
+(@john, 'Foe and Mice', 'Harvard Business Review', '2018-01-01'),
+(@russell, 'Rise With Honor', 'Harvard Business Review', '2018-01-01'),
+(@guillermo, 'Bow Of Eternity', 'Harvard Business Review', '2018-01-01'),
+(@alex, 'Right About The South', 'Harvard Business Review', '2018-01-01'),
+(@gary, 'Signs At The Apocolypse', 'Harvard Business Review', '2018-01-01');
 
--- Instructor variables
-SET @brendan := (SELECT id FROM Instructor WHERE first_name = 'Brendan');
-SET @leto := (SELECT id FROM Instructor WHERE first_name = 'Leto');
-SET @duncan := (SELECT id FROM Instructor WHERE first_name = 'Duncan');
-SET @vladimir := (SELECT id FROM Instructor WHERE first_name = 'Vladimir');
-SET @piter := (SELECT id FROM Instructor WHERE first_name = 'Piter');
-SET @john := (SELECT id FROM Instructor WHERE first_name = 'John');
-SET @russell := (SELECT id FROM Instructor WHERE first_name = 'Russell');
-SET @guillermo := (SELECT id FROM Instructor WHERE first_name = 'Guillermo');
-SET @alex := (SELECT id FROM Instructor WHERE first_name = 'Alex');
-SET @gary := (SELECT id FROM Instructor WHERE first_name = 'Gary');
+INSERT INTO Awards (person_id, name, date) VALUES
+(@brendan, 'Girl With Silver', '2018-01-01'),
+(@leto, 'Thief Of The River', '2018-01-01'),
+(@duncan, 'Blacksmiths Of The North', '2018-01-01'),
+(@vladimir, 'Humans Of Nightmares', '2018-01-01'),
+(@piter, 'Heirs and Trees', '2018-01-01');
+
+INSERT INTO Section(course_id, term_id, person_id, classroom_id, capacity, start_time, end_time)
+VALUES (@comp353, @summer2019, @brendan, @H535, 30, '08:00:00', '10:00:00'),
+       (@comp353, @summer2019, @alex, @H635, 30, '11:00:00', '13:00:00'),
+       (@comp353, @summer2019, @guillermo, @H735, 30, '14:00:00', '16:00:00'),
+       (@comp352, @fall2018, @alex, @H535, 30, '08:00:00', '10:00:00'),
+       (@comp352, @fall2018, @alex, @H635, 30, '11:00:00', '13:00:00'),
+       (@comp352, @fall2018, @alex, @H735, 30, '14:00:00', '16:00:00'),
+       (@comp339, @summer2019, @vladimir, @H535, 30, '08:00:00', '10:00:00'),
+       (@comp339, @summer2019, @piter, @H635, 30, '11:00:00', '13:00:00'),
+       (@comp339, @summer2019, @john, @H735, 30, '14:00:00', '16:00:00'),
+       (@chem201, @summer2019, @gary, @H835, 30, '08:00:00', '10:00:00'),
+       (@comp352, @winter2017, @leto, @H535, 30, '08:00:00', '10:00:00'),
+       (@comp352, @winter2017, @leto, @H635, 30, '11:00:00', '13:00:00'),
+       (@comp352, @winter2017, @guillermo, @H735, 30, '14:00:00', '16:00:00'),
+       (@comp352, @fall2017, @duncan, @H535, 30, '08:00:00', '10:00:00'),
+       (@comp352, @fall2017, @russell, @H635, 30, '11:00:00', '13:00:00');
+
+SET @section_id := (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND person_id = @brendan);
+
+INSERT INTO Class(person_id, section_id, grade)
+VALUES (@odafin, @section_id, 4.3),
+       (@nada, @section_id, 4.3),
+       (@eliseo, @section_id, 4.3),
+       (@don, @section_id, 4.0),
+       (@dominick, @section_id, 4.0),
+       (@amanda, @section_id, 3.7),
+       (@mario, @section_id, 3.0),
+       (@petey, @section_id, 2.7),
+       (@Lucy, @section_id, 4.3),
+       (@anna, @section_id, 3.3),
+       (@paul, @section_id, 3.0);
+
+-- INSERT INTO StudentProgram(person_id, program_id)
+-- VALUES (@nada, @computer_science_program),
+--        (@eliseo, @computer_science_program),
+--        (@don, @computer_science_program),
+--        (@dominick, @computer_science_program),
+--        (@amanda, @computer_science_program),
+--        (@olivia, @human_relations),
+--        (@odafin, @accountancy),
+--        (@elliot, @sociology),
+--        (@maximina, @art_history),
+--        (@laurel, @childhood_education),
+--        (@mario, @computer_science_program),
+--        (@petey, @computer_science_program),
+--        (@anna, @computer_science_program),
+--        (@paul, @computer_science_program),
+--        (@odafin, @computer_science_program),
+--        (@anna, @human_relations),
+--        (@odafin, @software_engineering),
+--        (@anna, @software_engineering);
+
+-- renamed TeachingAssistant to Contracts to meet requirements
+-- CREATE TABLE Contract (
+--     name char(100) NOT NULL, -- eg "marker", "instructor", "ta"
+--     course_name char(100) NOT NULL REFERENCES Course(id),
+--     person_id INT NOT NULL REFERENCES Person(id),
+--     section_id INT NOT NULL,
+--     num_hours INT NOT NULL,
+--     total_salary INT NOT NULL,
+--     PRIMARY KEY (person_id, section_id)
+-- );
+
+-- -- TODO: needs trigger to verify student is TA for that section
+-- CREATE TABLE TA_Assignments (
+--     person_id INT NOT NULL REFERENCES Person(id),
+--     section_id INT NOT NULL REFERENCES Section(id),
+--     name CHAR(100) -- TODO: need additional content other than assignment name
+-- );
+
+-- INSERT INTO TeachingAssistant(student_id, section_id, num_hours)
+-- VALUES (@don, 1, 50),
+--        (@don, 2, 50),
+--        (@don, 3, 50),
+--        (@nada, 4, 50),
+--        (@nada, 5, 50),
+--        (@nada, 6, 50),
+--        (@eliseo, 7, 50),
+--        (@eliseo, 8, 50),
+--        (@eliseo, 9, 50),
+--        (@amanda, 10, 50);
 
 
-INSERT INTO TeachingAssistant(student_id, section_id, num_hours)
-VALUES (@don, 1, 50),
-       (@don, 2, 50),
-       (@don, 3, 50),
-       (@nada, 4, 50),
-       (@nada, 5, 50),
-       (@nada, 6, 50),
-       (@eliseo, 7, 50),
-       (@eliseo, 8, 50),
-       (@eliseo, 9, 50),
-       (@amanda, 10, 50);
-
-INSERT INTO Grade(letter_grade, gpa) VALUES ('A+', 4.3),
-                                            ('A', 4.0),
-                                            ('A-', 3.7),
-                                            ('B+', 3.3),
-                                            ('B', 3.0),
-                                            ('B-', 2.7),
-                                            ('C+', 2.3),
-                                            ('C', 2.0),
-                                            ('C-', 1.7),
-                                            ('D+', 1.3),
-                                            ('D', 1.0),
-                                            ('D-', 0.7),
-                                            ('F', 0.0);
-
--- Grade variables
-SET @aplus := (SELECT id FROM Grade WHERE letter_grade = 'A+');
-SET @a := (SELECT id FROM Grade WHERE letter_grade = 'A');
-SET @aminus := (SELECT id FROM Grade WHERE letter_grade = 'A-');
-SET @bplus := (SELECT id FROM Grade WHERE letter_grade = 'B+');
-SET @b := (SELECT id FROM Grade WHERE letter_grade = 'B');
-SET @bminus := (SELECT id FROM Grade WHERE letter_grade = 'B-');
-
-INSERT INTO Section(course_id, term_id, instructor_id, classroom, capacity, start_time, end_time)
-VALUES (@comp353, @summer2019, @brendan, 'H901', 30, '08:00:00', '10:00:00'),
-       (@comp353, @summer2019, @alex, 'H902', 30, '11:00:00', '13:00:00'),
-       (@comp353, @summer2019, @guillermo, 'H903', 30, '14:00:00', '16:00:00'),
-       (@comp352, @fall2018, @alex, 'H904', 30, '08:00:00', '10:00:00'),
-       (@comp352, @fall2018, @alex, 'H905', 30, '11:00:00', '13:00:00'),
-       (@comp352, @fall2018, @alex, 'H906', 30, '14:00:00', '16:00:00'),
-       (@comp339, @summer2019, @vladimir, 'H907', 30, '08:00:00', '10:00:00'),
-       (@comp339, @summer2019, @piter, 'H908', 30, '11:00:00', '13:00:00'),
-       (@comp339, @summer2019, @john, 'H909', 30, '14:00:00', '16:00:00'),
-       (@chem201, @summer2019, @gary, 'H910', 30, '08:00:00', '10:00:00'),
-       (@comp352, @winter2017, @leto, 'H904', 30, '08:00:00', '10:00:00'),
-       (@comp352, @winter2017, @leto, 'H905', 30, '11:00:00', '13:00:00'),
-       (@comp352, @winter2017, @guillermo, 'H906', 30, '14:00:00', '16:00:00'),
-       (@comp352, @fall2017, @duncan, 'H904', 30, '08:00:00', '10:00:00'),
-       (@comp352, @fall2017, @russell, 'H905', 30, '11:00:00', '13:00:00');
-
-INSERT INTO Class(student_id, section_id, grade_id)
-VALUES (@odafin, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @aplus),
-       (@nada, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @aplus),
-       (@eliseo, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @aplus),
-       (@don, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @a),
-       (@dominick, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @a),
-       (@amanda, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @aminus),
-       (@mario, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @b),
-       (@petey, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @bminus),
-       (@Lucy, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @aplus),
-       (@anna, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @bplus),
-       (@paul, (SELECT id FROM Section WHERE course_id = @comp353 AND term_id = @summer2019 AND instructor_id = @brendan), @b);
-
-INSERT INTO StudentProgram(student_id, program_id)
-VALUES (@nada, @computer_science_program),
-       (@eliseo, @computer_science_program),
-       (@don, @computer_science_program),
-       (@dominick, @computer_science_program),
-       (@amanda, @computer_science_program),
-       (@olivia, @human_relations),
-       (@odafin, @accountancy),
-       (@elliot, @sociology),
-       (@maximina, @art_history),
-       (@laurel, @childhood_education),
-       (@mario, @computer_science_program),
-       (@petey, @computer_science_program),
-       (@anna, @computer_science_program),
-       (@paul, @computer_science_program),
-       (@odafin, @computer_science_program),
-       (@anna, @human_relations),
-       (@odafin, @software_engineering),
-       (@anna, @software_engineering);
 
 INSERT INTO ResearchFunding(student_id)
 VALUES (@olivia),

@@ -112,7 +112,6 @@ CREATE TABLE IndustryExperience (
     position_name CHAR(100) NOT NULL,
     date_started DATE,
     date_ended DATE,
-    salary INT UNSIGNED NOT NULL,
     PRIMARY KEY(person_id, company_name, position_name)
 );
 
@@ -198,7 +197,7 @@ CREATE TABLE Section (
 CREATE TABLE Class (
     person_id INT NOT NULL REFERENCES Person(id),
     section_id INT NOT NULL REFERENCES Section(id),
-    grade INT NOT NULL DEFAULT 0,
+    grade DECIMAL(3,2) NOT NULL DEFAULT 0,
     PRIMARY KEY (person_id, section_id)
 );
 
@@ -287,7 +286,7 @@ DELIMITER $$
 CREATE TRIGGER passing_grade_prereqs BEFORE INSERT ON Class FOR EACH ROW
 BEGIN
     -- doing set difference: if there remains classes in the prereqs such that student didn't take it and pass, reject this signup to the course.
-    IF EXISTS (SELECT Course.course_id FROM Section, Prerequisite, Course WHERE NEW.section_id = Section.id AND Section.course_id = Prerequisite.course_id AND Prerequisite.prerequisite_course_id = Course.course_id NOT IN (SELECT course_id FROM Class, Section WHERE Class.section_id = Section.id AND Class.person_id = NEW.person_id AND Class.grade_id >= 0.7)) THEN
+    IF EXISTS (SELECT Course.id FROM Section, Prerequisite, Course WHERE NEW.section_id = Section.id AND Section.course_id = Prerequisite.course_id AND Prerequisite.prerequisite_course_id = Course.id NOT IN (SELECT course_id FROM Class, Section WHERE Class.section_id = Section.id AND Class.person_id = NEW.person_id AND Class.grade >= 0.7)) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "invalid action: Student does not meet prereq requirements.";
     END IF;
 END$$
