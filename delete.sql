@@ -1,6 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
 SET SQL_SAFE_UPDATES = 0;
-SET GLOBAL log_bin_trust_function_creators = 1;
 
 DELETE FROM Person;
 DELETE FROM Advisor;

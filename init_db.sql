@@ -1,6 +1,6 @@
 -- main project tables    
 SET SQL_SAFE_UPDATES = 0;
-SET GLOBAL log_bin_trust_function_creators = 1;
+
 SET @TRIGGER_BEFORE_INSERT_CHECKS = TRUE;
 SET @TRIGGER_AFTER_INSERT_CHECKS = TRUE;
 SET @TRIGGER_BEFORE_UPDATE_CHECKS = TRUE;
@@ -278,21 +278,25 @@ BEGIN
 END$$
 
 DELIMITER $$
-CREATE TRIGGER passing_grade_prereqs BEFORE INSERT ON Class FOR EACH ROW
+CREATE TRIGGER before_insert_class BEFORE INSERT ON Class FOR EACH ROW
 BEGIN
+	-- passing_grade_prereqs
     -- doing set difference: if there remains classes in the prereqs such that student didn't take it and pass, reject this signup to the course.
     IF EXISTS (SELECT Course.id FROM Section, Prerequisite, Course WHERE NEW.section_id = Section.id AND Section.course_id = Prerequisite.course_id AND Prerequisite.prerequisite_course_id = Course.id NOT IN (SELECT course_id FROM Class, Section WHERE Class.section_id = Section.id AND Class.person_id = NEW.person_id AND Class.grade >= 0.7)) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "invalid action: Student does not meet prereq requirements.";
     END IF;
-END$$
-
-DELIMITER $$
-CREATE TRIGGER only_one_section_of_same_class BEFORE INSERT ON Class FOR EACH ROW
-BEGIN
+    
+    -- only_one_section_of_same_class
     IF EXISTS (SELECT course_id, term_id FROM Section WHERE NEW.section_id = Section.id IN (
         SELECT 1 FROM Class, Section WHERE
         NEW.person_id = Class.person_id AND Class.section_id = Section.id)) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "invalid action: Student is already registered in this course for this term.";
+    END IF;
+    
+    -- new section to be added = n, old sections already there = o
+    -- no_conflicting_time_courses_student    
+    IF EXISTS  (SELECT n.start_time, n.end_time  FROM Section AS n, Section as o, Class WHERE NEW.person_id = Class.person_id AND Class.section_id = o.id AND n.id = NEW.section_id AND n.term_id = o.term_id AND ((n.start_time >= o.start_time AND n.start_time < o.end_time OR (n.start_time >= o.start_time AND n.end_time > o.end_time)))) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Student is already taking a course at this time";
     END IF;
 END$$
 
@@ -304,14 +308,7 @@ BEGIN
     END IF;
 END$$
 
--- new section to be added = n, old sections already there = o
-DELIMITER $$
-CREATE TRIGGER no_conflicting_time_courses_student BEFORE INSERT ON Class FOR EACH ROW
-BEGIN
-    IF EXISTS  (SELECT n.start_time, n.end_time  FROM Section AS n, Section as o, Class WHERE NEW.person_id = Class.person_id AND Class.section_id = o.id AND n.id = NEW.section_id AND n.term_id = o.term_id AND ((n.start_time >= o.start_time AND n.start_time < o.end_time OR (n.start_time >= o.start_time AND n.end_time > o.end_time)))) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Student is already taking a course at this time";
-    END IF;
-END$$
+
 
 DELIMITER $$
 CREATE TRIGGER grad_student_supervisor_funding_insert BEFORE INSERT ON StudentSupervisor FOR EACH ROW

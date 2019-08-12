@@ -1,7 +1,6 @@
     
 SET FOREIGN_KEY_CHECKS = 0;
 SET SQL_SAFE_UPDATES = 0;
-SET GLOBAL log_bin_trust_function_creators = 1;
 
 DROP TABLE IF EXISTS Person;
 DROP TABLE IF EXISTS Advisor;
@@ -54,6 +53,7 @@ DROP TRIGGER IF EXISTS thesis_based_program_must_be_grad;
 DROP TRIGGER IF EXISTS student_program_matching_degree;
 DROP TRIGGER IF EXISTS verify_advisor_is_instructor;
 DROP TRIGGER IF EXISTS validate_student_advisor;
+DROP TRIGGER IF EXISTS before_insert_class;
 
 DROP FUNCTION IF EXISTS get_grade_letter;
 DROP FUNCTION IF EXISTS get_gpa;
