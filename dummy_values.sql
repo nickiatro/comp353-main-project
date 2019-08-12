@@ -53,8 +53,8 @@ INSERT INTO Address (civic_number, city, province, postal_code) VALUES ('6', 'Sa
 INSERT INTO Campus (name) VALUES ('Sir George Williams');
 INSERT INTO Campus (name) VALUES ('Loyola');
 
-INSERT INTO Building (campus_name, name, numOfFloors) VALUES ('Sir George Williams', 'Hall', 15);
-INSERT INTO Building (campus_name, name, numOfFloors) VALUES ('Sir George Williams', 'Molson', 15);
+INSERT INTO Building (campus_name, name, numOfFloors, address_id) VALUES ('Sir George Williams', 'Hall', 15, (SELECT id FROM Address ORDER BY RAND() LIMIT 1));
+INSERT INTO Building (campus_name, name, numOfFloors, address_id) VALUES ('Sir George Williams', 'Molson', 15, (SELECT id FROM Address ORDER BY RAND() LIMIT 1));
 
 INSERT INTO Room (campus_name, building_name, num, capacity, room_type, floorNum) VALUES
 ('Sir George Williams', 'Hall', 535, 150, 'classroom', 5),
@@ -287,7 +287,7 @@ SET @comp348 := (SELECT id FROM Course WHERE code = 'COMP' AND number = 348);
 
 INSERT INTO Student(person_id, gpa, degree)
 VALUES (@olivia, 3.0, 'graduate'),
-       (@odafin, 2.2, 'undergraduate'),
+       (@odafin, 4.3, 'undergraduate'),
        (@amanda, 3.2, 'graduate'),
        (@dominick, 2.8, 'undergraduate'),
        (@elliot, 3.0, 'undergraduate'),
@@ -491,17 +491,17 @@ VALUES (@brendan, @computer_science),
        (@alex, @computer_science),
        (@gary, @computer_science);
        
-INSERT INTO Advisor (person_id) VALUES
-(@brendan),
-(@leto),
-(@duncan),
-(@vladimir),
-(@piter),
-(@john),
-(@russell),
-(@guillermo),
-(@alex),
-(@gary);
+INSERT INTO Advisor (person_id, department_id) VALUES
+(@brendan, @computer_science),
+(@leto, @computer_science),
+(@duncan, @computer_science),
+(@vladimir, @computer_science),
+(@piter, @computer_science),
+(@john, @computer_science),
+(@russell, @computer_science),
+(@guillermo, @computer_science),
+(@alex, @computer_science),
+(@gary, @computer_science);
 
 SET @advisor := (SELECT person_id FROM Advisor WHERE person_id IN (SELECT id FROM Person WHERE first_name = 'Brendan'));
 

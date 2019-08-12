@@ -34,6 +34,7 @@ CREATE TABLE Building (
     campus_name CHAR(100) REFERENCES Campus(name),
     name CHAR(100),
     numOfFloors INT NOT NULL,
+    address_id INT UNSIGNED REFERENCES Address(id),
     PRIMARY KEY(name, campus_name)
 );
 
@@ -204,7 +205,7 @@ CREATE TABLE Class (
 CREATE TABLE StudentProgram (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     person_id INT NOT NULL REFERENCES Person(id),
-    program_id INT NOT NULL REFERENCES Program(id)
+    program_id INT NOT NULL REFERENCES Program(id)    
 );
 
 CREATE TABLE ResearchFunding (
@@ -233,7 +234,8 @@ CREATE TABLE InstructorDepartment (
 
 -- needs trigger: verify advisor is an instructor
 CREATE TABLE Advisor (
-    person_id INT NOT NULL REFERENCES Person(id),    
+    person_id INT NOT NULL REFERENCES Person(id), 
+    department_id INT NOT NULL REFERENCES Department(id),  
     PRIMARY KEY (person_id)
 );
 
@@ -397,6 +399,13 @@ CREATE TRIGGER validate_student_advisor BEFORE INSERT ON StudentAdvisor FOR EACH
     IF NOT EXISTS(Select * FROM StudentProgram, Instructor, Program WHERE StudentProgram.person_id IN (SELECT person_id FROM StudentProgram WHERE id = NEW.student_program_id) AND Instructor.person_id = New.advisor_id AND StudentProgram.program_id = Program.id AND Program.department_id = Instructor.department_id) THEN
 		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "The given student isn't in a program that is supervised by this advisor.";
     END IF;
+END$$
+
+DELIMITER $$
+CREATE FUNCTION update_student_gpa(student_id INT) RETURNS CHAR(5)
+BEGIN
+    DECLARE start  CHAR(5) DEFAULT "a";  
+    RETURN start;
 END$$
 
 -- CREATE TRIGGER gpa_calculator AFTER INSERT ON Class FOR EACH ROW BEGIN

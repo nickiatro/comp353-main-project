@@ -57,5 +57,20 @@ DROP TRIGGER IF EXISTS before_insert_class;
 
 DROP FUNCTION IF EXISTS get_grade_letter;
 DROP FUNCTION IF EXISTS get_gpa;
+DROP FUNCTION IF EXISTS update_student_gpa;
 
 DROP PROCEDURE IF EXISTS SelectAllSupervisorsInDepartment;
+DROP PROCEDURE IF EXISTS SelectAllAdvisorsInDepartment;
+DROP PROCEDURE IF EXISTS FindAllGraduateStudentsBySupervisor;
+DROP PROCEDURE IF EXISTS FindAllTeachingAssistantAssignmentsByCourseAndTerm;
+DROP PROCEDURE IF EXISTS FindTotalStudentResearchFundingByTerm;
+DROP PROCEDURE IF EXISTS FindCoursesListByStudentAndTerm;
+DROP PROCEDURE IF EXISTS FindInstructorCourseByTerm;
+DROP PROCEDURE IF EXISTS FindStudentsByProgramAndTerm;
+DROP PROCEDURE IF EXISTS FindCoursesByTermAndProgram;
+DROP PROCEDURE IF EXISTS FindProgramsByDepartment;
+DROP PROCEDURE IF EXISTS FindBuildingDetails;
+DROP PROCEDURE IF EXISTS FindCourseDetails;
+DROP PROCEDURE IF EXISTS RegisterStudentInCourse;
+DROP PROCEDURE IF EXISTS DropStudentCourse;
+DROP PROCEDURE IF EXISTS GetStudentReport;
