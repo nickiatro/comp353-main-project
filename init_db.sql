@@ -138,7 +138,7 @@ CREATE TABLE Salary(
 -- renamed TeachingAssistant to Contracts to meet requirements
 CREATE TABLE Contract (
     name char(100) NOT NULL, -- eg "marker", "instructor", "ta"
-    course_name char(100) NOT NULL REFERENCES Course(id),
+    course_id INT NOT NULL REFERENCES Course(id),
     person_id INT NOT NULL REFERENCES Person(id),
     section_id INT NOT NULL,
     num_hours INT NOT NULL,
@@ -202,9 +202,9 @@ CREATE TABLE Class (
 );
 
 CREATE TABLE StudentProgram (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     person_id INT NOT NULL REFERENCES Person(id),
-    program_id INT NOT NULL REFERENCES Program(id),
-    PRIMARY KEY (person_id, program_id)
+    program_id INT NOT NULL REFERENCES Program(id)
 );
 
 CREATE TABLE ResearchFunding (
@@ -233,35 +233,30 @@ CREATE TABLE InstructorDepartment (
 
 -- needs trigger: verify advisor is an instructor
 CREATE TABLE Advisor (
-    person_id INT NOT NULL REFERENCES Person(id),
-    program_id INT NOT NULL REFERENCES Program(id),
-    term_id INT NOT NULL REFERENCES Term(id),
-    PRIMARY KEY (person_id, program_id, term_id)
+    person_id INT NOT NULL REFERENCES Person(id),    
+    PRIMARY KEY (person_id)
 );
 
 -- additional trigger: student's program is in the advisor's department
 CREATE TABLE StudentAdvisor (
-    student_id INT NOT NULL REFERENCES Person(id),
-    advisor_id INT NOT NULL REFERENCES Person(id),
+    student_program_id INT NOT NULL REFERENCES StudentProgram(id),
+    advisor_id INT NOT NULL REFERENCES Advisor(person_id),
     term_id INT NOT NULL REFERENCES Term(id),
-    PRIMARY KEY (student_id, advisor_id, term_id)
+    PRIMARY KEY (student_program_id, advisor_id, term_id)
 );
 
 CREATE TABLE Supervisor (
     person_id INT NOT NULL PRIMARY KEY REFERENCES Person(id),
-    first_name CHAR(100) NOT NULL,
-    last_name CHAR(100) NOT NULL,
     department_id INT NOT NULL,
     has_research_funding BOOLEAN NOT NULL -- TODO: change this.
 );
 
 CREATE TABLE StudentSupervisor (
-    person_id INT NOT NULL     REFERENCES Person(id),
+    person_id INT NOT NULL REFERENCES Person(id),
     supervisor_id INT NOT NULL REFERENCES Supervisor(person_id),
     granted_funding BOOLEAN DEFAULT FALSE, -- TODO: change this.
     PRIMARY KEY (person_id, supervisor_id)
 );
-
 
 -- triggers
 DELIMITER $$
@@ -321,7 +316,7 @@ END$$
 DELIMITER $$
 CREATE TRIGGER grad_student_supervisor_funding_insert BEFORE INSERT ON StudentSupervisor FOR EACH ROW
 BEGIN
-    IF EXISTS(SELECT * FROM Student, Supervisor WHERE NEW.supervisor_id = Supervisor.id AND Student.id = NEW.person_id AND (has_research_funding = FALSE OR Student.gpa < 3.0) AND NEW.granted_funding = TRUE) THEN
+    IF EXISTS(SELECT * FROM Student, Supervisor WHERE NEW.supervisor_id = Supervisor.person_id AND Student.person_id = NEW.person_id AND (has_research_funding = FALSE OR Student.gpa < 3.0) AND NEW.granted_funding = TRUE) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Supervisor has no funding available, or student has insufficient GPA";
     END IF;
 END$$
@@ -329,7 +324,7 @@ END$$
 DELIMITER $$
 CREATE TRIGGER grad_student_supervisor_funding_update BEFORE UPDATE ON StudentSupervisor FOR EACH ROW
 BEGIN
-    IF EXISTS(SELECT * FROM Student,Supervisor WHERE NEW.supervisor_id = Supervisor.id AND Student.id = NEW.person_id AND (has_research_funding = FALSE OR Student.gpa < 3.0) AND NEW.granted_funding = TRUE) THEN
+    IF EXISTS(SELECT * FROM Student,Supervisor WHERE NEW.supervisor_id = Supervisor.person_id AND Student.person_id = NEW.person_id AND (has_research_funding = FALSE OR Student.gpa < 3.0) AND NEW.granted_funding = TRUE) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Supervisor has no funding available, or student has insufficient GPA";
     END IF;
 END$$
@@ -337,10 +332,10 @@ END$$
 DELIMITER $$
 CREATE TRIGGER grad_student_TA_signup BEFORE INSERT ON Contract FOR EACH ROW
 BEGIN
-    IF EXISTS(SELECT * FROM Student, Contract WHERE NEW.person_id = Student.id = Contract.person_id AND (Student.gpa < 3.2 OR Student.degree = "undergraduate")) THEN
+    IF EXISTS(SELECT * FROM Student, Contract WHERE NEW.person_id = Student.person_id = Contract.person_id AND (Student.gpa < 3.2 OR Student.degree = "undergraduate")) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Student has insufficient GPA, or is an undergrad.";
     END IF;
-    IF EXISTS(SELECT * FROM Student, Contract WHERE NEW.person_id = Student.id = Contract.person_id GROUP BY Contract.person_id HAVING count(Contract.person_id) >= 2) THEN
+    IF EXISTS(SELECT * FROM Student, Contract WHERE NEW.person_id = Student.person_id = Contract.person_id GROUP BY Contract.person_id HAVING count(Contract.person_id) >= 2) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "Student is teaching too many courses";
     END IF;
 END$$
@@ -399,11 +394,11 @@ CREATE TRIGGER validate_student_advisor BEFORE INSERT ON StudentAdvisor FOR EACH
     IF NOT EXISTS(Select * FROM Instructor WHERE Instructor.person_id = NEW.advisor_id) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "The given advisor is not actually an advisor.";
     END IF;
-    IF NOT EXISTS(Select * FROM Student WHERE Student.person_id = NEW.student_id) THEN
+    IF NOT EXISTS(SELECT * FROM Student WHERE Student.person_id IN (SELECT person_id FROM StudentProgram WHERE id = NEW.student_program_id)) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "The given student is not actually a student.";
     END IF;
-    IF NOT EXISTS(Select * FROM StudentProgram, Instructor WHERE StudentProgram.person_id = NEW.student_id AND Instructor.person_id = New.advisor_id AND StudentProgram.program_id = Program.id AND Program.department_id = Instructor.department_id) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "The given student isn't in a program that is supervised by this advisor.";
+    IF NOT EXISTS(Select * FROM StudentProgram, Instructor, Program WHERE StudentProgram.person_id IN (SELECT person_id FROM StudentProgram WHERE id = NEW.student_program_id) AND Instructor.person_id = New.advisor_id AND StudentProgram.program_id = Program.id AND Program.department_id = Instructor.department_id) THEN
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "The given student isn't in a program that is supervised by this advisor.";
     END IF;
 END$$
 

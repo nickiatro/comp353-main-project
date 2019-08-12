@@ -241,7 +241,8 @@ VALUES ('Actuarial Mathematics', 'undergraduate', 0, 0, @mathematics),
        ('Accountancy', 'graduate', 0, 1, @business),
        ('Sociology', 'graduate', 0, 1, @social_sciences),
        ('Art History', 'graduate', 0, 1, @history),
-       ('Childhood Education', 'graduate', 0, 1, @education);
+       ('Childhood Education', 'graduate', 0, 1, @education),
+       ('Computer Science Thesis', 'graduate', 0, 1, @computer_science);
 
 -- Program variables
 SET @actuarial_mathematics := (SELECT id FROM Program WHERE name = 'Actuarial Mathematics');
@@ -255,6 +256,7 @@ SET @accountancy := (SELECT id FROM Program WHERE name = 'Accountancy');
 SET @sociology := (SELECT id FROM Program WHERE name = 'Sociology');
 SET @art_history := (SELECT id FROM Program WHERE name = 'Art History');
 SET @childhood_education := (SELECT id FROM Program WHERE name = 'Childhood Education');
+SET @computer_science_program_graduate := (SELECT id FROM Program WHERE name = 'Computer Science Thesis');
 
 INSERT INTO Course(name, code, number, department_id)
 VALUES ('Number Theory', 'MATH', 200, @mathematics),
@@ -424,70 +426,31 @@ VALUES (@odafin, @section_id, 4.3),
        (@anna, @section_id, 3.3),
        (@paul, @section_id, 3.0);
 
--- INSERT INTO StudentProgram(person_id, program_id)
--- VALUES (@nada, @computer_science_program),
---        (@eliseo, @computer_science_program),
---        (@don, @computer_science_program),
---        (@dominick, @computer_science_program),
---        (@amanda, @computer_science_program),
---        (@olivia, @human_relations),
---        (@odafin, @accountancy),
---        (@elliot, @sociology),
---        (@maximina, @art_history),
---        (@laurel, @childhood_education),
---        (@mario, @computer_science_program),
---        (@petey, @computer_science_program),
---        (@anna, @computer_science_program),
---        (@paul, @computer_science_program),
---        (@odafin, @computer_science_program),
---        (@anna, @human_relations),
---        (@odafin, @software_engineering),
---        (@anna, @software_engineering);
-
--- renamed TeachingAssistant to Contracts to meet requirements
--- CREATE TABLE Contract (
---     name char(100) NOT NULL, -- eg "marker", "instructor", "ta"
---     course_name char(100) NOT NULL REFERENCES Course(id),
---     person_id INT NOT NULL REFERENCES Person(id),
---     section_id INT NOT NULL,
---     num_hours INT NOT NULL,
---     total_salary INT NOT NULL,
---     PRIMARY KEY (person_id, section_id)
--- );
-
--- -- TODO: needs trigger to verify student is TA for that section
--- CREATE TABLE TA_Assignments (
---     person_id INT NOT NULL REFERENCES Person(id),
---     section_id INT NOT NULL REFERENCES Section(id),
---     name CHAR(100) -- TODO: need additional content other than assignment name
--- );
-
--- INSERT INTO TeachingAssistant(student_id, section_id, num_hours)
--- VALUES (@don, 1, 50),
---        (@don, 2, 50),
---        (@don, 3, 50),
---        (@nada, 4, 50),
---        (@nada, 5, 50),
---        (@nada, 6, 50),
---        (@eliseo, 7, 50),
---        (@eliseo, 8, 50),
---        (@eliseo, 9, 50),
---        (@amanda, 10, 50);
-
-
-
-INSERT INTO ResearchFunding(student_id)
-VALUES (@olivia),
-       (@odafin),
-       (@elliot),
-       (@maximina),
-       (@laurel),
-       (@Caire),
-       (@Marsha),
-       (@Manny),
-       (@Val),
-       (@Lucy);
-
+INSERT INTO StudentProgram(person_id, program_id)
+VALUES (@nada, @computer_science_program_graduate),
+       (@eliseo, @computer_science_program_graduate),
+       (@don, @computer_science_program_graduate),
+       (@dominick, @computer_science_program),
+       (@amanda, @computer_science_program_graduate),	
+       (@olivia, @human_relations),		
+       (@odafin, @biochemistry),       
+       (@elliot, @biophysics),
+	   (@maximina, @biophysics),
+	   (@laurel, @behavioural_neuroscience),       
+	   (@mario, @computer_science_program_graduate),
+       (@petey, @computer_science_program_graduate),
+       (@anna, @computer_science_program_graduate),
+       (@paul, @computer_science_program_graduate),
+       (@odafin, @computer_science_program),
+       (@anna, @human_relations),
+       (@odafin, @software_engineering),
+       (@anna, @art_history);
+       
+INSERT INTO ResearchFunding(person_id, amount, term_id)
+VALUES (@olivia, 10000, @summer2019),               
+       (@Caire, 10000, @summer2019),
+       (@Marsha, 10000, @summer2019);
+       
 INSERT INTO Prerequisite(course_id, prerequisite_course_id)
 VALUES (@comp353, @comp352),
        (@comp353, @comp339),
@@ -498,9 +461,9 @@ VALUES (@comp353, @comp352),
        (@comp348, @comp248),
        (@comp348, @comp249),
        (@comp352, @comp248),
-       (@comp352, @comp249);
+       (@comp352, @comp249);       
 
-INSERT INTO StudentDepartment(student_id, department_id)
+INSERT INTO StudentDepartment(person_id, department_id)
 VALUES (@olivia, @humanities),
        (@odafin, @business),
        (@amanda, @computer_science),
@@ -514,9 +477,9 @@ VALUES (@olivia, @humanities),
        (@mario, @computer_science),
        (@petey, @computer_science),
        (@anna, @computer_science),
-       (@paul, @computer_science);
+       (@paul, @computer_science);   
 
-INSERT INTO InstructorDepartment(instructor_id, department_id)
+INSERT INTO InstructorDepartment(person_id, department_id)
 VALUES (@brendan, @computer_science),
        (@leto, @computer_science),
        (@duncan, @computer_science),
@@ -527,66 +490,52 @@ VALUES (@brendan, @computer_science),
        (@guillermo, @computer_science),
        (@alex, @computer_science),
        (@gary, @computer_science);
+       
+INSERT INTO Advisor (person_id) VALUES
+(@brendan),
+(@leto),
+(@duncan),
+(@vladimir),
+(@piter),
+(@john),
+(@russell),
+(@guillermo),
+(@alex),
+(@gary);
 
-INSERT INTO Advisor (first_name, last_name)
-VALUES ('Vatika', 'Prasad'),
-       ('Kareena', 'Kapoor'),
-       ('Aamir', 'Khan'),
-       ('Tom', 'Cruise'),
-       ('Katrina', 'Kaif'),
-       ('Mama', 'Bear'),
-       ('Buggie', 'Singh'),
-       ('Priyanka', 'Chopra'),
-       ('Mickey', 'Mouse'),
-       ('Mini', 'Xyz');
-
-SET @advisor := (SELECT id FROM Advisor WHERE first_name = 'Vatika');
+SET @advisor := (SELECT person_id FROM Advisor WHERE person_id IN (SELECT id FROM Person WHERE first_name = 'Brendan'));
 
 INSERT INTO StudentAdvisor(student_program_id, advisor_id, term_id)
-VALUES ((SELECT id FROM StudentProgram WHERE student_id = @nada AND program_id = @computer_science_program), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @eliseo AND program_id = @computer_science_program), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @dominick AND program_id = @computer_science_program), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @amanda AND program_id = @computer_science_program), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @olivia AND program_id = @human_relations), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @odafin AND program_id = @computer_science_program), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @elliot AND program_id = @sociology), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @maximina AND program_id = @art_history), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @laurel AND program_id = @childhood_education), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @don AND program_id = @computer_science_program), @advisor, @summer2019),
-       ((SELECT id FROM StudentProgram WHERE student_id = @anna AND program_id = @software_engineering), @advisor, @summer2019);
+VALUES ((SELECT id FROM StudentProgram WHERE person_id = @nada AND program_id = @computer_science_program_graduate), @advisor, @summer2019),
+       ((SELECT id FROM StudentProgram WHERE person_id = @eliseo AND program_id = @computer_science_program_graduate), @advisor, @summer2019),
+       ((SELECT id FROM StudentProgram WHERE person_id = @dominick AND program_id = @computer_science_program), @advisor, @summer2019),
+       ((SELECT id FROM StudentProgram WHERE person_id = @odafin AND program_id = @biochemistry), @advisor, @summer2019),
+       ((SELECT id FROM StudentProgram WHERE person_id = @don AND program_id = @computer_science_program_graduate), @advisor, @summer2019),
+       ((SELECT id FROM StudentProgram WHERE person_id = @anna AND program_id = @art_history), @advisor, @summer2019);
+       
+INSERT INTO Supervisor(person_id, department_id, has_research_funding)
+VALUES (@brendan, @computer_science, 1);
 
-INSERT INTO Supervisor(first_name, last_name, department_id, has_research_funding)
-VALUES ('Marge', 'Arin', @computer_science, 1),
-       ('Hugh', 'Briss', @computer_science, 1),
-       ('Gene', 'Poole', @computer_science, 1),
-       ('Ty', 'Tanic', @computer_science, 1),
-       ('Manuel', 'Labor', @computer_science, 1),
-       ('Lynn', 'Guini', @computer_science, 1),
-       ('Claire', 'Arin', @computer_science, 1),
-       ('Peg', 'Leg', @computer_science, 1),
-       ('Marty', 'Graw', @computer_science, 1),
-       ('Olive', 'Yu', @computer_science, 1);
+SET @supervisor_id := @brendan;
 
-SET @marge := (SELECT id FROM Supervisor WHERE first_name = 'Marge');
+INSERT INTO StudentSupervisor(person_id, supervisor_id, granted_funding) VALUES
+(@nada, @supervisor_id, 1),
+(@eliseo, @supervisor_id, 1),
+(@don, @supervisor_id, 1),
+(@amanda, @supervisor_id, 1),	
+(@mario, @supervisor_id, 1),
+(@petey, @supervisor_id, 1),
+(@anna, @supervisor_id, 1),
+(@paul, @supervisor_id, 1);
 
-INSERT INTO StudentSupervisor(student_id, supervisor_id)
-VALUES (@olivia, @marge),
-       (@odafin, @marge),
-       (@elliot, @marge),
-       (@maximina, @marge),
-       (@laurel, @marge),
-       (@Vinny, @marge),
-       (@Joyce, @marge),
-       (@Cliff, @marge),
-       (@Earl, @marge),
-       (@Cooke, @marge),
-       (@Jen, @marge),
-       (@Reanne, @marge),
-       (@Paul, @marge),
-       (@Chris, @marge),
-       (@Gio, @marge),
-       (@Caire, @marge),
-       (@Marsha, @marge),
-       (@Manny, @marge),
-       (@Val, @marge),
-       (@Lucy, @marge);
+INSERT INTO Contract (name, course_id, person_id, section_id, num_hours, total_salary) VALUES
+('marker', @comp353, @don, @section_id, 50, 60000),
+('marker', @comp353, @nada, @section_id, 50, 60000),
+('marker', @comp353, @eliseo, @section_id, 50, 60000),
+('marker', @comp353, @amanda, @section_id, 50, 60000);
+
+INSERT INTO TA_Assignments (person_id, section_id, name) VALUES
+(@don, @section_id, 'temp'),
+(@nada, @section_id, 'temp'),
+(@eliseo, @section_id, 'temp'),
+(@amanda, @section_id, 'temp');
