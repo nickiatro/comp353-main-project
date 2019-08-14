@@ -123,7 +123,7 @@ CREATE TABLE Publications (
     date DATE NOT NULL
 );
 
-CREATE TABLE Awards(
+CREATE TABLE Awards (
     person_id INT NOT NULL REFERENCES Person(id),
     name CHAR(100) NOT NULL,
     date DATE NOT NULL
